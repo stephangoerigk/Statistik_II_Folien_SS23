@@ -911,22 +911,32 @@ psych::describe.by(df[,c("Symptome", "Gruppe")], "Gruppe")
 class: top, left
 ### Einfaktorielle Varianzanalyse (ANOVA)
 
-#### Einfaktorielle ANOVA - Rechenbeispiel in R
 
 <small>
 
+.pull-left[
+#### Einfaktorielle ANOVA - Rechenbeispiel in R
+
 Berechnen der ANOVA:
 
-```{r}
+```{r out.width = "100px"}
 anova(lm(Symptome ~ Gruppe, data = df))
 ```
+]
 
+.pull-right[
 * $QS_{total}=QS_{zwischen} +QS_{innerhalb}=582.4+2082.2=2664.6$
+
 * $df_{zwischen}=p-1=2$
+
 * $df_{innerhalb}=p \cdot (n-1) = 3 \cdot (50-1)=147$
+
 * $\hat{\sigma}_{zwischen}^2=\frac{QS_zwischen}{df_{zwischen}}=\frac{582.4}{2}=291.2$
+
 * $\hat{\sigma}_{innerhalb}^2=\frac{QS_innerhalb}{df_{innerhalb}}=\frac{2082.2}{147}=14.17$
+
 * $F_{(2,147)}=\frac{291.20}{14.17}=20.56$
+]
 
 </small>
 ---
