@@ -919,7 +919,7 @@ Unsere Stichprobe ist auf insgesamt `\(N=150\)` (n=50 pro Gruppe) erweitert word
 
 
 ```r
-head(df, 10)
+head(df, 10) # erste 10 Zeilen anzeigen
 ```
 
 ```
@@ -980,6 +980,7 @@ class: top, left
 
 Berechnen der ANOVA:
 
+&lt;br&gt;&lt;br&gt;&lt;br&gt;
 
 ```r
 anova(lm(Symptome ~ Gruppe, data = df))
