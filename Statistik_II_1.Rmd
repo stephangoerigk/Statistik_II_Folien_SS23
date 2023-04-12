@@ -55,7 +55,7 @@ knitr::opts_chunk$set(
 name: Title slide
 class: middle, left
 <br><br><br><br><br><br><br>
-# Statistik I
+# Statistik II
 
 ### Einheit 1: Einfaktorielle Varianzanalyse (1)
 ##### 12.04.2023 | Prof. Dr. phil. Stephan Goerigk
