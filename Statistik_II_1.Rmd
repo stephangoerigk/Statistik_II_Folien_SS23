@@ -122,7 +122,7 @@ df = readxl::read_xlsx("Modul Quantitative Methoden II_Termine.xlsx", sheet = "T
 df$Datum = format(as.Date(df$Datum), "%d.%m.%Y")
 df %>%
   kbl() %>%
-  kable_classic(full_width = T, position = "left")
+  kable_classic(full_width = T, position = "left", font_size = 15)
 ```
 
 ---
@@ -935,19 +935,19 @@ class: top, left
 
 .full-width[.content-box-gray[
 
-* Unterscheidung: **Deskrkiptiv- vs. Inferenzstatistik**
+* **ANOVA** = Verfahren für Hypothesen mit einer intervallskalierten AV und einer mehr als 2-stufigen UV
 
-* Deskriptivstatistik: Stichprobendaten **zusammenfassen** (z.B. Mittelwert)
+* ANOVA vergleicht im Vergleich zum t-Test auch **mehr als 2 Gruppen** miteinander.
 
-* Inferenzstatistik nutzen wir, um Ergebnisse unter Wahrscheinlichkeitsannahmen auf Population zu **verallgemeinern** (z.B. Konfidenzintervall)
+* Durch **simultanen Mittelwertsvergleich** (Omnibustest) werden $\alpha$ -Fehler-Kumulierung und Reduktion der Teststärke vermieden.
 
-* Quantitative Methoden: Erkenntnisgewinn durch **Hypothesentesten**
+* Prinzip basiert auf der Unterscheidung zwischen **systematischer Varianz** und **unsystematischer Varianz**.
 
-* Variablen werden i.d.R. in einer **Datenmatrix** erfasst
+* Signifikanztestung über **F-Test**, der systematische und unsystematische Varianz ins Verhältnis zueinander setzt (F-Quotient).
 
-* Auprägungen von Variablen können mit **Häufigkeitstabelle** zusammengefasst werden
+* **Signifikante ANOVA** zeigt einen Unterschied zwischen Mittwelwerten an, jedoch nicht, zwischen welchen Gruppen dieser genau besteht.
 
-* Wichtige Deskriptivstatistiken: **Relative und absolute Häufigkeiten** 
+* ANOVA alleine kann **keine gerichteten Hypothesen** prüfen.
 ]
 
 ]
