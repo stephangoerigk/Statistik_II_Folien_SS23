@@ -946,8 +946,6 @@ anova(lm(Symptome ~ Gruppe, data = df))
 class: top, left
 ### Take-aways
 
-hallo 
-
 .full-width[.content-box-gray[
 
 * **ANOVA** = Verfahren für Hypothesen mit einer intervallskalierten AV und einer mehr als 2-stufigen UV
