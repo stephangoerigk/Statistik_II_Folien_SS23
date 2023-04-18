@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Einheit 1</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Dr. Stephan Goerigk" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/hygge.css" rel="stylesheet" />
+    <link href="libs/tile-view/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view/tile-view.js"></script>
+    <script src="libs/fabric/fabric.min.js"></script>
+    <link href="libs/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#EE0071"],"pen_size":4,"eraser_size":40,"palette":[]}) })</script>
+    <script src="libs/kePrint/kePrint.js"></script>
+    <link href="libs/lightable/lightable.css" rel="stylesheet" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+name: Title slide
+class: middle, left
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+# Statistik II
+
+### Einheit 2: Einfaktorielle Varianzanalyse (2)
+##### 19.04.2023 | Prof. Dr. phil. Stephan Goerigk
+
+---
+class: top, left
+### Einfaktorielle Varianzanalyse (ANOVA)
+
+.pull-left[
+
+#### Determinanten der ANOVA
+
+* Determinanten = Größen, welche die Signifikanz der ANOVA beeinflussen:
+
+  * Signifikanzniveau `\((\alpha)\)`
+  
+  * Teststärke `\((1-\beta)\)`
+  
+  * Effektgröße (Unterschied zwischen Mittelwerten)
+  
+  * Stichprobengröße `\((N)\)`
+  
+`\(\rightarrow\)` Wir testen gegen die Nullhypothese `\((H_0)\)` und verwerfen diese bei einem signifikanten Ergebnis
+]
+.pull-right[
+![](Statistik_II_2_files/figure-html/unnamed-chunk-1-1.png)&lt;!-- --&gt;
+]
+
+---
+class: top, left
+### Einfaktorielle Varianzanalyse (ANOVA)
+
+#### Determinanten der ANOVA
+
+
+
+.pull-left[
+##### Exkurs: Beziehung zwischen F-Wert und t-Wert
+
+* Für den t-Test gelernte Konzepte können vollständig auf die Varianzanalyse übertragen werden
+
+* t-Test = Vergleich 2er Mittelwerte `\(\rightarrow\)` entsprich ANOVA mit 2-stufigem Faktor (UV)
+
+**Beispiel aus Einheit 1 (2 Stufen):** 
+
+Vergleich Placebo vs. Medikament 1
+]
+
+.pull-right[
+.center[
+&lt;img src="Statistik_II_2_files/figure-html/unnamed-chunk-3-1.png" width="350px" /&gt;
+]
+]
+---
+class: top, left
+### Einfaktorielle Varianzanalyse (ANOVA)
+
+#### Determinanten der ANOVA
+
+##### Exkurs: Beziehung zwischen F-Wert und t-Wert
+
+
+```r
+t.test(Symptome ~ Gruppe, data = df[df$Gruppe == "Placebo" | df$Gruppe == "Medikament.1",], var.equal = T)
+```
+
+```
+## 
+## 	Two Sample t-test
+## 
+## data:  Symptome by Gruppe
+## t = 6.0718, df = 98, p-value = 2.403e-08
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  2.994253 5.901785
+## sample estimates:
+## mean in group Medikament.1      mean in group Placebo 
+##                  11.585633                   7.137614
+```
+
+---
+class: top, left
+### Einfaktorielle Varianzanalyse (ANOVA)
+
+#### Determinanten der ANOVA
+
+##### Exkurs: Beziehung zwischen F-Wert und t-Wert
+
+
+```r
+anova(lm(Symptome ~ Gruppe, data = df[df$Gruppe == "Placebo" | df$Gruppe == "Medikament.1",]))
+```
+
+```
+## Analysis of Variance Table
+## 
+## Response: Symptome
+##           Df  Sum Sq Mean Sq F value    Pr(&gt;F)    
+## Gruppe     1  494.62  494.62  36.867 2.403e-08 ***
+## Residuals 98 1314.82   13.42                      
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+```
+
+---
+class: top, left
+### Einfaktorielle Varianzanalyse (ANOVA)
+
+#### Determinanten der ANOVA
+
+##### Exkurs: Beziehung zwischen F-Wert und t-Wert
+
+`$$F_{(1; 98)}=\frac{\hat{\sigma}_{zwischen}^2}{\hat{\sigma}_{innerhalb}^2}=\frac{494.62}{13.42}=36.87$$`
+
+`$$t_{(98)} = 6.0718$$`
+
+`$$6.0718^2=36.87$$`
+* Das Quadrat des t-Werts entspricht dem F-Wert einer einfaktoriellen ANOVA mit zwei Stufen
+
+`\(\rightarrow\)` Die Varianzanalyse ist eine Verallgemeinerung des t-Tests
+
+---
+class: top, left
+### Einfaktorielle Varianzanalyse (ANOVA)
+
+#### Determinanten der ANOVA
+
+##### Effektstärke
+
+&lt;small&gt;
+* Das Maß für den Populationseffekt in der Varianzanalyse heißt `\(\Omega^2\)`
+
+`$$\Omega^2=\frac{\sigma^2_{systematisch}}{\sigma^2_{Gesamt}}$$`
+
+* `\(\Omega^2\)` Gibt den Anteil systematischer Varianz an der Gesamtvarianz an
+
+* Schätzer für den Populationseffekt `\(\Omega^2\)` ist `\(\omega^2\)` (klein Omega-Quadrat)
+
+* Die Schätzung erfolgt über `\(f^2\)`
+
+`$$f^2=\frac{(F_{df_{Zähler}; df_{Nenner}}-1)\cdot df_{Zähler}}{N}$$`
+
+`$$\omega^2=\frac{f^2}{1+f^2}$$`
+&lt;/small&gt;
+
+---
+class: top, left
+### Einfaktorielle Varianzanalyse (ANOVA)
+
+#### Determinanten der ANOVA
+
+##### Effektstärke
+
+&lt;small&gt;
+
+```r
+anova(lm(Symptome ~ Gruppe, data = df))
+```
+
+```
+## Analysis of Variance Table
+## 
+## Response: Symptome
+##            Df Sum Sq Mean Sq F value    Pr(&gt;F)    
+## Gruppe      2  582.4 291.201  20.558 1.341e-08 ***
+## Residuals 147 2082.2  14.165                      
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+```
+
+`$$f^2=\frac{(F_{df_{Zähler}; df_{Nenner}}-1)\cdot df_{Zähler}}{N} = \frac{(20.558-1)\cdot 2}{150}=0.26$$`
+&lt;/small&gt;
+
+---
+class: top, left
+### Einfaktorielle Varianzanalyse (ANOVA)
+
+#### Determinanten der ANOVA
+
+##### Effektstärke
+
+`$$\omega^2=\frac{f^2}{1+f^2}= \frac{0.26}{1+0.26}=0.2063$$`
+* Der Anteil der Effektvarianz des Faktors Gruppe beträgt 20.63%
+
+* Anders ausgedrückt: der Faktor Gruppe klärt circa 21% der Gesamtvarianz auf
+
+* Dies entspricht einem großen Effekt.
+
+**Konventionen:**
+
+&lt;table class="table" style="font-size: 18px; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Effektstärke &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Omega-Quadrat &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Kleiner Effekt &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 0.01 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mittlerer Effekt &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 0.06 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Großer Effekt &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 0.14 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+class: top, left
+### Einfaktorielle Varianzanalyse (ANOVA)
+
+#### Determinanten der ANOVA
+
+##### Effektstärke
+
+* Ein weiteres, häufig verwendetes Effektmaß ist `\(\eta^2\)` (Eta-Quadrat)
+
+* Es gibt den Anteil der aufgeklärten Varianz der Messwerte auf Ebene der Stichprobe an
+
+* Es wird aus dem Verhältnis von Quadratsummen, anstelle von Varianzen berechnet
+
+`$$\eta^2=\frac{QS_{zwischen}}{QS_{zwischen} + QS_{innerhalb}}$$`
+* Berechnung kann ebenfalls über `\(f^2\)` erfolgen (wir schreiben für die Stichprobe `\(f_s^2\)`)
+
+.pull-left[
+`$$f_s^2=\frac{(F_{df_{Zähler}; df_{Nenner}})\cdot df_{Zähler}}{df_{Nenner}}$$`
+]
+
+.pull-right[
+`$$\eta^2=\frac{f_s^2}{1+f_s^2}$$`
+
+]
+
+---
+class: top, left
+### Einfaktorielle Varianzanalyse (ANOVA)
+
+#### Determinanten der ANOVA
+
+##### Effektstärke
+
+`$$f_s^2=\frac{20.558 \cdot 2}{147}=0.2797$$`
+
+`$$\eta^2=\frac{0.2797}{1+0.2797}=0.2185$$`
+* Wert fällt im Vergleich zum wahren Effekt auf Populationsebene zu groß aus (Überschätzung)
+
+* Oftmals liefert `\(\omega^2\)` genauere Schätzung (Daten innerhalb der Stichprobe sind überangepasst)
+
+* Der Stichprobenebene klärt der Faktor Gruppe ca. 22% der Varianz der Messwerte auf
+
+* Konventionen für `\(\eta^2\)` entsprechen denen für `\(\Omega^2\)`
+
+---
+class: top, left
+### Einfaktorielle Varianzanalyse (ANOVA)
+
+#### Determinanten der ANOVA
+
+##### Residualvarianz
+
+* Je kleiner die Residualvarianz, desto größer die Test stärke (Wahrscheinlichkeit, dass Test signifikant wird)
+
+* Schätzung der Residualvarianz durch die Varianz innerhalb steht im Nenner des F-Bruchs `\(\rightarrow\)` bei kleineren Werten wird F-Wert größer
+
+* Die Größe der Residualvarianz wird häufig auch "Rauschen" genannt
+
+Analogie aus der Akustik:
+
+  * Bei lauten Nebengeräuschen sind leise Töne schwerer zu hören
+  
+  * Das Signal wird vom Rauschen verdeckt
+
+`\(\rightarrow\)` ANOVA: Rauschen = Residualvarianz; Signal = gesuchter Effekt (z.B. Gruppenunterschied)
+
+---
+class: top, left
+### Einfaktorielle Varianzanalyse (ANOVA)
+
+#### Determinanten der ANOVA
+
+##### Größe des Effekts
+
+* Umso größer der gesuchte Populationseffekt, desto größer die Teststärke
+
+* Je mehr sich die Populationsmittelwerte der Gruppen unterscheiden (systematischer Einfluss auf die AV), desto wahrscheinlicher ist ein signifikantes Ergebnis
+
+* Dies entspricht einem deutlichen Signal, welches auch noch bei starkem Rauschen hörbar ist
+
+---
+class: top, left
+### Einfaktorielle Varianzanalyse (ANOVA)
+
+#### Determinanten der ANOVA
+
+##### Stichprobenumfang
+
+* Umso größer der Stichprobenumfang, desto größer die Teststärke
+
+**Gründe:**
+
+1. Varianz zwischen
+
+  * Varianz zwischen hängt proportional von der Anzahl der Personen in einer Bedingung ab 
+
+  * Die größer `\(N\)`, desto größer die Varianz zwischen (steht im Zähler des F-Bruchs)
+
+  * größere Varianz zwischen `\(\rightarrow\)` größerer F-Wert `\(\rightarrow\)` signifikanteres Ergebnis
+
+2. Freiheitsgrade Varianz innerhalb
+
+  * Erhöhen sich mit steigenden Stichprobenumfang `\(\rightarrow\)` Verkleinerung des kritischen F-Werts (man kommt leichter über die Signifikanzschwelle)
+
+---
+class: top, left
+### Einfaktorielle Varianzanalyse (ANOVA)
+
+#### Determinanten der ANOVA
+
+##### `\(\alpha\)`-Fehler
+
+* Je größer (weniger streng) das a priori festgelegte Signifikanzniveau, desto größer die Teststärke
+
+* Durch die Erhöhung des `\(\alpha\)`-Fehlers steigt die Wahrscheinlichkeit die Alternativhypothese fälschlich zu wählen (Fehler 1. Art).
+
+**ABER:**
+
+* Gleichzeitig erhöht sich die Wahrscheinlichkeit, einen Effekt zu finden, falls er wirklich existiert.
+
+
+---
+class: top, left
+### Einfaktorielle Varianzanalyse (ANOVA)
+
+#### Determinanten der ANOVA
+
+##### Stichprobenumfangsplanung
+
+* Einer der wichtigsten Schritte vor der Durchführung einer Untersuchung
+
+* Nur so kann gewährleistet werden, dass die Interpretation eines Untersuchungsergebnisses korrekt ablaufen kann
+
+Probleme bei Auslassen der Stichprobenumfangsplanung:
+
+* Stichprobenumfang zu klein. Teststärke ist so klein, dass ein nicht signifikantesergebnis nicht interpretierbar ist (underpowered)
+
+* Stichprobenumfang zu groß. Auch kleine Effekte werden signifikant, die für eine vernünftige inhaltliche Interpretation zu klein sind (overpowered)
+
+---
+class: top, left
+### Einfaktorielle Varianzanalyse (ANOVA)
+
+#### Determinanten der ANOVA
+
+##### Stichprobenumfangsplanung (in R)
+
+
+```r
+pwr::pwr.anova.test(k=3, f= 0.2, sig.level = 0.05, power = 0.9)
+```
+
+```
+## 
+##      Balanced one-way analysis of variance power calculation 
+## 
+##               k = 3
+##               n = 106.455
+##               f = 0.2
+##       sig.level = 0.05
+##           power = 0.9
+## 
+## NOTE: n is number in each group
+```
+
+* Bei Annahme eines Signifikanzniveaus von 0.05 wären für eine ANOVA mit 3 Gruppen und einer großen Effektstärke (0.20) wären für eine Teststärke `\((1-\beta)\)` von 90% lediglich N=106 Personen zum Nachweisen eines signifikanten Effekts notwendig gewesen.
+
+---
+class: top, left
+### Einfaktorielle Varianzanalyse (ANOVA)
+
+#### Determinanten der ANOVA
+
+##### Stichprobenumfangsplanung (in GPower)
+
+.center[
+&lt;img src="bilder/gpower_3.png" width="470px" /&gt;
+]
+
+---
+class: top, left
+### Einfaktorielle Varianzanalyse (ANOVA)
+
+#### Post-Hoc-Analysen
+
+---
+class: top, left
+### Einfaktorielle Varianzanalyse (ANOVA)
+
+#### Voraussetzungen der ANOVA
+
+* ANOVA gehört zur den sog. parametrischen Verfahren (wie auch der t-Test)
+
+Es gelten folgende Voraussetzungen:
+
+1. Die abhängige Variable ist intervallskaliert
+  * messtheoretisch abgesichert (muss man wissen)
+
+2. Das untersuchte Merkmal ist in der Population normalverteilt
+
+3. Varianz Homogenität (Varianten sind innerhalb der verglichenen Gruppen ungefähr gleich)
+
+4. Messwerte in allen Bedingungen sind unabhängig voneinander
+  * Durch randomisierte Zuweisung der Personen zu den Faktorstufen
+  * Falls nicht möglich gegebenenfalls Kontrolle von Störvariablen
+
+
+---
+class: top, left
+### Take-aways
+
+.full-width[.content-box-gray[
+
+* **ANOVA** = Verfahren für Hypothesen mit einer intervallskalierten AV und einer mehr als 2-stufigen UV
+
+* ANOVA vergleicht im Vergleich zum t-Test auch **mehr als 2 Gruppen** miteinander.
+
+* Durch **simultanen Mittelwertsvergleich** (Omnibustest) werden `\(\alpha\)` -Fehler-Kumulierung und Reduktion der Teststärke vermieden.
+
+* Prinzip basiert auf der Unterscheidung zwischen **systematischer Varianz** und **unsystematischer Varianz**.
+
+* Signifikanztestung über **F-Test**, der systematische und unsystematische Varianz ins Verhältnis zueinander setzt (F-Quotient).
+
+* **Signifikante ANOVA** zeigt einen Unterschied zwischen Mittwelwerten an, jedoch nicht, zwischen welchen Gruppen dieser genau besteht.
+
+* ANOVA alleine kann **keine gerichteten Hypothesen** prüfen.
+]
+
+]
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
