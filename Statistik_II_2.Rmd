@@ -763,19 +763,17 @@ class: top, left
 
 .full-width[.content-box-gray[
 
-* **ANOVA** = Verfahren für Hypothesen mit einer intervallskalierten AV und einer mehr als 2-stufigen UV
+* Der t-Test ist ein **Spezialfall der Varianzanalyse**, daher gelten bekannte Zusammenhänge zwischen Stichprobengröße, Effektstärke, Teststärke und Signifikanzniveau auch hier.
 
-* ANOVA vergleicht im Vergleich zum t-Test auch **mehr als 2 Gruppen** miteinander.
+* Für eine gut geplante ANOVA ist eine **Stichprobenumfangsplanung** (Poweranalyse) notwendig.
 
-* Durch **simultanen Mittelwertsvergleich** (Omnibustest) werden $\alpha$ -Fehler-Kumulierung und Reduktion der Teststärke vermieden.
+* Ein **signifikantes Ergebnis** der ANOVA bedeutet lediglich, dass sich zumindest eine Stude des Faktors von einer anderen unterscheidet.
 
-* Prinzip basiert auf der Unterscheidung zwischen **systematischer Varianz** und **unsystematischer Varianz**.
+* **Post-Hoc-Analysen** werden zur Untersuchung genutzt, wo genau die Mittelwertsunterschiede liegen.
 
-* Signifikanztestung über **F-Test**, der systematische und unsystematische Varianz ins Verhältnis zueinander setzt (F-Quotient).
+* Der **Tukey-HSD Test** determiniert die kleinste noch signifikante Differenz, somit ist der paarweise Vergleich der Gruppen im Anschluss an die Durchführung der ANOVA  möglich.
 
-* **Signifikante ANOVA** zeigt einen Unterschied zwischen Mittwelwerten an, jedoch nicht, zwischen welchen Gruppen dieser genau besteht.
-
-* ANOVA alleine kann **keine gerichteten Hypothesen** prüfen.
+* Außer dem Tukey-HSD Test gibt es noch zahlreiche **weitere Optionen** für Post-Hoc-Tests, welche mehr/weniger streng für Fehler 1. und 2. Art kontrollieren.
 ]
 
 ]
