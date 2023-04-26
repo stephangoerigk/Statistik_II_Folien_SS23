@@ -515,7 +515,7 @@ $b:$ Steigungsparameter
 
 * Theoretisch sind endlos viele Geraden denkbar, die die Punktewolke alle an unterschiedlichen Stellen durchschneiden
 
-* Wir wollen aber genau die Geraden finden, welche die Daten am allerbesten beschreibt.
+* Wir wollen aber genau die Gerade finden, welche die Daten am allerbesten beschreibt.
 ]
 
 ---
@@ -611,7 +611,7 @@ $$a=\bar{y} - b \cdot \bar{x}$$
 
 2. Y-Steigungsparameter $(b)$
 
-$$b=\frac{s^2_{XY}}{s^2_X} = r_{XY} \cdot \frac{s_y}{s_x}$$
+$$b=\frac{\sigma^2_{XY}}{\sigma^2_X} = r_{XY} \cdot \frac{\sigma_y}{\sigma_x}$$
 ]
 
 ---
@@ -634,14 +634,14 @@ $$a=\bar{y} - b \cdot \bar{x}$$
 
 2. Y-Steigungsparameter $(b)$
 
-$$b=\frac{s^2_{XY}}{s^2_X} = r_{XY} \cdot \frac{s_y}{s_x}$$
+$$b=\frac{\sigma^2_{XY}}{\sigma^2_X} = r_{XY} \cdot \frac{\sigma_y}{\sigma_x}$$
 ]
 .pull-right[
 **To Do - wir benötigen:**
 * Mittelwert von X: $\bar{x}$ 
 * Mittelwert von Y: $\bar{y}$ 
-* Kovarianz von XY: $s^2_{XY}$
-* Varianz von X: $s^2_X$
+* Kovarianz von XY: $\sigma^2_{XY}$
+* Varianz von X: $\sigma^2_X$
 
 ]
 
@@ -675,10 +675,10 @@ Mittelwert von Y = $\bar{y}=\frac{\sum\limits _{i=1}^{n}y_{i}}{n}$
 
 <br>
 <br>
-Kovarianz von XY = $s_{xy}=\frac{\displaystyle \sum_{i=1}^{n}(x_{i}-\bar{x})\cdot(y_{i}-\bar{y})}{n-1}^2$ 
+Kovarianz von XY = $\sigma_{xy}^2=\frac{\displaystyle \sum_{i=1}^{n}(x_{i}-\bar{x})\cdot(y_{i}-\bar{y})}{n-1}^2$ 
 <br>
 <br>
-Varianz von X =  $s^2=\dfrac{\displaystyle\sum_{i=1}^{n}(x_{i}-\bar{x})^2}{n-1}$ 
+Varianz von X =  $\sigma^2=\dfrac{\displaystyle\sum_{i=1}^{n}(x_{i}-\bar{x})^2}{n-1}$ 
 
 ]
 
@@ -713,10 +713,10 @@ Mittelwert von Y = $\bar{y}=\frac{\sum\limits _{i=1}^{n}y_{i}}{n}$  =  `r round(
 
 <br>
 <br>
-Kovarianz von XY = $s_{xy}=\frac{\displaystyle \sum_{i=1}^{n}(x_{i}-\bar{x})\cdot(y_{i}-\bar{y})}{n-1}^2$ = `r round(cov(sampledata$X, sampledata$Y), 2)`
+Kovarianz von XY = $\sigma_{xy}^2=\frac{\displaystyle \sum_{i=1}^{n}(x_{i}-\bar{x})\cdot(y_{i}-\bar{y})}{n-1}^2$ = `r round(cov(sampledata$X, sampledata$Y), 2)`
 <br>
 <br>
-Varianz von X =  $s^2=\dfrac{\displaystyle\sum_{i=1}^{n}(x_{i}-\bar{x})^2}{n-1}$ =  `r round(var(sampledata$X, na.rm = T),2)`
+Varianz von X =  $\sigma^2=\dfrac{\displaystyle\sum_{i=1}^{n}(x_{i}-\bar{x})^2}{n-1}$ =  `r round(var(sampledata$X, na.rm = T),2)`
 
 ]
 
@@ -736,7 +736,7 @@ knitr::kable((t(sampledata[,2:3])),
 ```
 
 
-$$ b=\frac{s_{xy}}{s^2_x}=\frac{`r round(cov(sampledata$X, sampledata$Y), 2)`}{`r round(var(sampledata$X, na.rm = T),2)`} = `r round(cov(sampledata$X, sampledata$Y) / var(sampledata$X, na.rm = T), 2)`$$
+$$ b=\frac{\sigma_{xy}^2}{\sigma^2_x}=\frac{`r round(cov(sampledata$X, sampledata$Y), 2)`}{`r round(var(sampledata$X, na.rm = T),2)`} = `r round(cov(sampledata$X, sampledata$Y) / var(sampledata$X, na.rm = T), 2)`$$
 
 <br>
 
@@ -782,7 +782,53 @@ layout(legend = list(x = 100, y = 0.5))
 ]
 
 .pull-right[
-$$ y=`r round(mean(sampledata$Y, na.rm = T) - cov(sampledata$X, sampledata$Y) / var(sampledata$X, na.rm = T) * mean(sampledata$X, na.rm = T),2)` + `r round(cov(sampledata$X, sampledata$Y) / var(sampledata$X, na.rm = T), 2)`\cdot x$$
+$$ \hat{y}=`r round(mean(sampledata$Y, na.rm = T) - cov(sampledata$X, sampledata$Y) / var(sampledata$X, na.rm = T) * mean(sampledata$X, na.rm = T),2)` + `r round(cov(sampledata$X, sampledata$Y) / var(sampledata$X, na.rm = T), 2)`\cdot x$$
+
+* Es ergibt sich also der geschätzte $Y$ Wert $(\hat{y})$ aus a plus b mal $x$
+
+**Nochmal zurück zu unserer Interpretation:**
+  
+- a ist also der Wert wo $X=0$ ist, also hat jemand mit 0 auf der UV einen AV Wert von 29 hat
+
+- Wenn wir nun um 1 Einheit $X$ nach rechts gehen (in welcher Einheit die UV auch immmer gemessen wird), nimmt $\hat{y}$ um b zu.
+]
+
+---
+class: top, left
+### Einfache lineare Regression
+
+#### Lineare Regressionsfunktion
+
+.pull-left[
+```{r echo = F, out.height = "420px"}
+scatterplot = ggplot(data = sampledata_long, aes(x = X, y = Y, label = ID, colour = Predicted)) +
+  geom_segment(x = 0, xend = 10, y = coef(model)[["(Intercept)"]], yend = coef(model)[["(Intercept)"]], colour = "black") +
+  geom_segment(x = 10, xend = 10, y = coef(model)[["(Intercept)"]], yend = predict(model, newdata = data.frame(X=10)), colour = "black") +
+  geom_point(x = 0, y = coef(model)[["(Intercept)"]], colour = my_green) +
+  geom_point() +
+  geom_abline(slope = coef(model)[["X"]], 
+              intercept = coef(model)[["(Intercept)"]], colour = my_green) +
+   theme_classic()+
+  scale_color_manual(values = c("yi Beobachtungswert" = "black",
+                                  "ŷi geschätzter Wert" = my_green)) +
+  theme(rect = element_rect(fill = "transparent")) +
+  labs(colour = "", x = "Lernaufwand (X)", y = "Klausurerfolg (Y)") +
+  annotate(geom = "Text",  label = "a", x = 0, y = coef(model)[["(Intercept)"]] + 5, colour =  "red") +
+  annotate(geom = "Text",  label = "b", x = 12, y = predict(model, newdata = data.frame(X=10)) - (predict(model, newdata = data.frame(X=10)) - coef(model)[["(Intercept)"]])/2, colour =  "red") +
+ coord_cartesian(xlim = c(0,100), ylim = c(0,100)) #+
+#theme(axis.text = element_blank(), axis.ticks = element_blank(), axis.line = element_blank(), axis.title = element_blank())
+ggplotly(scatterplot) %>%
+layout(legend = list(x = 100, y = 0.5))
+```
+]
+
+.pull-right[
+$$ \hat{y}=`r round(mean(sampledata$Y, na.rm = T) - cov(sampledata$X, sampledata$Y) / var(sampledata$X, na.rm = T) * mean(sampledata$X, na.rm = T),2)` + `r round(cov(sampledata$X, sampledata$Y) / var(sampledata$X, na.rm = T), 2)`\cdot x$$
+
+* Wir könnten nun ausrechnen, welchen $Y$ Wert eine Person nach x Einheiten der UV hat.
+
+* Welchen Wert erhalten wir z.B. für $X=10$?
+
 ]
 
 ---
@@ -811,6 +857,10 @@ layout(legend = list(x = 100, y = 0.5))
 
 
 .pull-right[
+Nach Aufstellen des Modells:
+
+* Abstände zwischen Beobachtungswerten und Regressionsgerade unterschiedlich groß
+
 **Frage:**
 
 * Wie gut passt unser Modell auf die Beobachtungswerte?
@@ -852,9 +902,13 @@ layout(legend = list(x = 100, y = 0.5))
 
 * Wie gut passt unser Modell auf die Beobachtungswerte?
 
+* horizontale Gerade = Mittelwert von $Y$ (um welchen Werte streuen)
+
+$\rightarrow$ **Gesamtvarianz**
+
 Regressionsgerade kann einen Anteil der Streuung um den Mittelwert erklären:
 
-$\rightarrow$ Aufgeklärte Varianz
+$\rightarrow$ **Aufgeklärte Varianz**
 
 ]
 
@@ -1025,18 +1079,17 @@ class: top, left
 ### Take-aways
 
 .full-width[.content-box-gray[
+* Zusammenhänge können neben Kovarianz/Korrelation auch mit der **Regression** quantifiziert werden.
 
-* Der t-Test ist ein **Spezialfall der Varianzanalyse**, daher gelten bekannte Zusammenhänge zwischen Stichprobengröße, Effektstärke, Teststärke und Signifikanzniveau auch hier.
+* Regression ist sinnvoll, wenn aus den X-Werten auf die dazugehörigen Y-Werte **geschlossen** (diese vorhergesagt) werden soll.
 
-* Für eine gut geplante ANOVA ist eine **Stichprobenumfangsplanung** (Poweranalyse) notwendig.
+* **Regressionsgerade** = graphische Veranschaulichung der Regressionsgleichung
 
-* Ein **signifikantes Ergebnis** der ANOVA bedeutet lediglich, dass sich zumindest eine Stude des Faktors von einer anderen unterscheidet.
+* Regressionsgleichung ist ddefiniert durch die **Regressionskoeffizienten** (Y-Achsenabschnitt und Steigung), welche aus Daten geschätzt werden müssen.
 
-* **Post-Hoc-Analysen** werden zur Untersuchung genutzt, wo genau die Mittelwertsunterschiede liegen.
+* **Y-Achsenabschnitt** ist der Startwert (wenn X = 0) und **Steigung** ist die Veränderung in der AV bei Zunahme der UV um 1 Einheit.
 
-* Der **Tukey-HSD Test** determiniert die kleinste noch signifikante Differenz, somit ist der paarweise Vergleich der Gruppen im Anschluss an die Durchführung der ANOVA  möglich.
-
-* Außer dem Tukey-HSD Test gibt es noch zahlreiche **weitere Optionen** für Post-Hoc-Tests, welche mehr/weniger streng für Fehler 1. und 2. Art kontrollieren.
+* Das **Bestimmtheitsmaß** $(R^2)$ gibt an, wie viel Prozent (%) der Gesamtvarianz der AV durch die UV (also durch die das Regressionsmodell) aufgeklärt werden.
 ]
 
 ]
