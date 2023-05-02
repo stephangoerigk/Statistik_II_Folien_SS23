@@ -101,6 +101,7 @@ ggplot(data = ex2, aes(X, Y)) +
 ```
 
 ```{r include=FALSE}
+sampledata = read.csv("sampledata.csv")
 model = lm(Y ~ X, data = sampledata)
 sampledata$pred = predict(model, newdata = sampledata)
 sampledata_long = multilevel::make.univ(sampledata, sampledata[,3:4], outname = "Y")
