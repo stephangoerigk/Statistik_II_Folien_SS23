@@ -386,7 +386,7 @@ class: top, left
 
 #### Dichotom nominalskalierte Prädiktoren (UVs)
 
-##### Regression vs. unabhängiger t-Test
+##### Regression vs. unabhängiger t-Test in R
 
 .pull-left[
 
@@ -406,7 +406,7 @@ t.test(Sorgen ~ Gruppe, data = df2, var.equal = T)
 ]
 ]
 
-$\rightarrow$ t-Wert und p-Wert sind identisch!
+$\rightarrow$ t-Wert und p-Wert von Regression und t-Test sind identisch!
 
 ---
 class: top, left
@@ -1123,13 +1123,78 @@ class: top, left
 class: top, left
 ### Einfache lineare Regression
 
+#### Voraussetzungen der einfachen linearen Regression
+
+**Normalverteilung der Residuen:**
+
+.pull-left[
+.center[
+```{r out.height="300px"}
+qqnorm(rstandard(model), cex = 1.5)
+qqline(rstandard(model))
+```
+]
+]
+
+.pull-right[
+```{r}
+model = lm(Testleistung ~ IQ, data = df)
+shapiro.test(rstandard(model))
+```
+
+Benchmarks:
+
+* QQ-Plot: Punkte sollten möglichst auf der 45 Grad Diagonalen liegen
+* Shapiro-Wilk Test: p-Wert sollte > als $\alpha=.05$ sein
+
+]
+
+---
+class: top, left
+### Einfache lineare Regression
+
+#### Voraussetzungen der einfachen linearen Regression
+
+**Homoskedastizität:**
+
+.pull-left[
+.center[
+```{r out.height="300px"}
+model = lm(Testleistung ~ IQ, data = df)
+plot(model, 1, cex = 2)
+```
+]
+]
+
+.pull-right[
+* Plot der standardisierten Residuen gegen die standardisierten vorhergesagten Werte
+
+* Ideal ist eine Punktewolke ohne Systematik (Pattern)
+
+* Die Linie sollte relativ horizontal verlaufen
+
+$\rightarrow$ dann ist Homoskedastizitätsannahme gegeben
+]
+---
+class: top, left
+### Einfache lineare Regression
+
+.pull-left[
 #### Teststärkeanalyse und Stichprobenumfangsplanung
 
 * Bei einfachen linearen Regressionen nutzt man als Effektstärke für die Stichprobenumfangsplanung oft 
 
   * das standardisierte Regressionsgewicht oder
-  * das Bestimmtheitsmaß $(R^2)$
   
+  * das Bestimmtheitsmaß $(R^2)$
+]
+.pull-right[
+.center[
+```{r eval = TRUE, echo = F, out.width = "480px"}
+knitr::include_graphics("bilder/gpower_reg.png")
+```
+]
+]
 
   
 
