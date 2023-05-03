@@ -340,7 +340,7 @@ $$\bar{y}_{1} - \bar{y}_{0} = 5.04$$
 
 **Bestimmung Regressionskoeffizienten:**
 
-$$ b=\frac{\sigma_{xy}^2}{\sigma^2_x}=\frac{`r round(cov(df2$Gruppe, df2$Sorgen), 2)`}{`r round(var(df2$Gruppe, na.rm = T),2)`} = `r round(cov(df2$Gruppe, df2$Sorgen) / var(df2$Gruppe, na.rm = T), 2)`$$
+$$ b=\frac{\sigma_{yx}^2}{\sigma^2_x}=\frac{`r round(cov(df2$Gruppe, df2$Sorgen), 2)`}{`r round(var(df2$Gruppe, na.rm = T),2)`} = `r round(cov(df2$Gruppe, df2$Sorgen) / var(df2$Gruppe, na.rm = T), 2)`$$
 
 $$ a = \bar{y} - b \cdot \bar{x} = `r round(mean(df2$Sorgen, na.rm = T) - cov(df2$Gruppe, df2$Sorgen) / var(df2$Gruppe, na.rm = T) * mean(df2$Gruppe, na.rm = T),2)`$$
 
@@ -382,7 +382,6 @@ $\rightarrow$ Test der Steigung auf Signifikanz gelangt zu **identischem Ergebni
 ---
 class: top, left
 ### Einfache lineare Regression
-
 
 #### Dichotom nominalskalierte Prädiktoren (UVs)
 
@@ -431,7 +430,6 @@ Beispiele für bivariate (zwischen 2 Variablen) non-lineare Zusammenhänge:
 ---
 class: top, left
 ### Einfache lineare Regression
-
 
 .pull-left[
 
@@ -496,6 +494,91 @@ class: top, left
 ### Einfache lineare Regression
 
 #### Regressionsgewichte
+
+<small>
+**Unstandardisierte Regressionsgewichte:**
+
+* Steigungsparameter $(b_{yx})$ = Regressionsgewicht
+
+* $X$-Wert wird "gewichtet", sodass entsprechendes $Y$ herauskommt (Verechnungsregel: z.B. mal 2 oder durch 3)
+
+* Steigung $(b_{yx})$ gibt an, um wie viele Einheiten sich $Y$ in der Originalmetrik (Fragebogenpunkte, Reaktionszeit, Gewicht in mg/g/kg...) verändert, wenn $X$ um 1 Einheit zunimmt
+
+* Steigung in Originalmetrik = unstandardisiertes Regressionsgewicht
+
+$$b_{yx}=\frac{\text{Anzahl Einheiten auf Y}}{\text{pro 1 Einheit X}}$$
+
+**Problem mit unstandardisierten Regressionsgewichten:**
+
+* unstandardisierte Steigungsparameter für 2 Regressionen mit unterschiedlichen $Y$ können nicht hinsichtlich ihrer Größe (Skalierung) verglichen werden 
+
+* Beispiel: 1 Einheit Reaktionszeit [in ms] $\neq$ 1 Einheit Fragebogenpunkte [z.B. 1-10]
+
+---
+class: top, left
+### Einfache lineare Regression
+
+#### Regressionsgewichte
+
+Selbes Konstrukt (Gewicht) $\rightarrow$ unterschiedliche Originalmetrik von $Y$ $\rightarrow$ unterschiedliche Steigung
+
+.pull-left[
+```{r echo=F, out.height="420px"}
+library(faux)
+set.seed(123)
+dat1 <- rnorm_multi(n = 110,
+                  mu = c(20, 20),
+                  sd = c(5, 5),
+                  r = c(0.8),
+                  varnames = c("X", "Y"),
+                  empirical = FALSE)
+dat2 <- dat1
+
+ggplotly(ggplot(dat1, aes(x = X, y = Y*1000)) +
+           geom_point() +
+           ggtitle("Regression mit Y in g (b = 864.4)") +
+           labs(y = "Gewicht gemessen in g") +
+           theme_classic() +
+           geom_smooth(method = "lm", se = F, colour = my_green))
+```
+]
+.pull-right[
+```{r echo=F, out.height="420px"}
+ ggplotly(ggplot(dat2, aes(x = X, y = Y)) +
+                    geom_point() +
+                    theme_classic() +
+            labs(y = "Gewicht in kg") +
+            ggtitle("Regression mit Y gemessen in kg (b = 0.8644)") +
+                    geom_smooth(method = "lm", se = F, colour = my_green))
+```
+]
+
+---
+class: top, left
+### Einfache lineare Regression
+
+#### Regressionsgewichte
+
+<small>
+**Standardisierte Regressionsgewichte:**
+
+* Ziel: einheitliche Metrik für Vergleiche erhalten
+
+* Standardisiertes Regressionsgewicht wird oft als $\beta$ bezeichnet ("beta-Gewicht")
+
+* Vorgehen: Regressionsgewicht muss von Originalmetrik des untersuchten Merkmals $(Y)$ bereinigt werden
+
+  * Zähler- und Nennnereinheiten werden an der Streuung von $Y$ und $X$ relativiert
+
+$$b_{yx}=\frac{\frac{\text{Anzahl Einheiten auf Y}}{\sigma_y}}{\frac{\text{pro 1 Einheit X}}{\sigma_x}}=b \cdot \frac{\frac{1}{\sigma_y}}{\frac{1}{\sigma_x}}= b \cdot \frac{\sigma_y}{\sigma_x}$$
+
+**Interpretation:**
+
+* Standardisiertes Regressionsgewicht $(\beta)$ ist unabhängig von Originalmetrik
+
+* Es drückt aus, um wie viele Standardabweichungen sich $Y$ verändert, wenn $X$ um eine Standardabweichung zunimmt.
+
+* Sonderfall einfache Regression (nur 1 UV): $\beta$ ist identisch mit Pearson-Korrelation $(r)$ $\rightarrow$ Wertbereich -1 bis +1
 
 ---
 class: top, left
@@ -658,7 +741,7 @@ class: top, left
 
 **Standardfehler der Steigung**
 
-Für die Berechnung des Standardfehlers der Steigung $(b_{xy})$ ermitteln wir den Standardschätzfehler:
+Für die Berechnung des Standardfehlers der Steigung $(b_{yx})$ ermitteln wir den Standardschätzfehler:
 
 $$\hat{\sigma}_{(y|x)}=\sqrt{\frac{n \cdot s_y^2 - n \cdot b^2 \cdot s^2_x}{n-2}}$$
 
@@ -682,7 +765,7 @@ names(df) = c("ID",
 
 Regressionsgerade aufstellen:
 
-$$ b=\frac{\sigma_{xy}^2}{\sigma^2_x}=\frac{`r round(cov(df$IQ, df$Testleistung), 2)`}{`r round(var(df$IQ, na.rm = T),2)`} = `r round(cov(df$IQ, df$Testleistung) / var(df$IQ, na.rm = T), 2)`$$
+$$ b=\frac{\sigma_{yx}^2}{\sigma^2_x}=\frac{`r round(cov(df$IQ, df$Testleistung), 2)`}{`r round(var(df$IQ, na.rm = T),2)`} = `r round(cov(df$IQ, df$Testleistung) / var(df$IQ, na.rm = T), 2)`$$
 
 $$ a = \bar{y} - b \cdot \bar{x} = `r round(mean(df$Testleistung, na.rm = T) - cov(df$IQ, df$Testleistung) / var(df$IQ, na.rm = T) * mean(df$IQ, na.rm = T),2)`$$
 
@@ -933,7 +1016,7 @@ names(df) = c("ID",
               "Testleistung")
 ```
 
-$$ b=\frac{\sigma_{xy}^2}{\sigma^2_x}=\frac{`r round(cov(df$IQ, df$Testleistung), 2)`}{`r round(var(df$IQ, na.rm = T),2)`} = `r round(cov(df$IQ, df$Testleistung) / var(df$IQ, na.rm = T), 2)`$$
+$$ b=\frac{\sigma_{yx}^2}{\sigma^2_x}=\frac{`r round(cov(df$IQ, df$Testleistung), 2)`}{`r round(var(df$IQ, na.rm = T),2)`} = `r round(cov(df$IQ, df$Testleistung) / var(df$IQ, na.rm = T), 2)`$$
 
 $$ a = \bar{y} - b \cdot \bar{x} = `r round(mean(df$Testleistung, na.rm = T) - cov(df$IQ, df$Testleistung) / var(df$IQ, na.rm = T) * mean(df$IQ, na.rm = T),2)`$$
 
@@ -1007,9 +1090,9 @@ $$0.12 \pm 2.10 \cdot \frac{1.44}{`r round(sd(df$IQ),2)` \cdot \sqrt{20}}= 0.12 
 * untere Grenze: $0.12 - 0.07 = 0.05$
 * obere Grenze: $0.12 + 0.07 = 0.19$
 
-$\beta_{xy}=0.12,$ $KI_{95\%}[0.05 - 0.19]$
+$\beta_{yx}=0.12,$ $KI_{95\%}[0.05 - 0.19]$
 
-$\rightarrow$ Da das KI den Wert 0 nicht umschließt, ist $\beta_{xy}$ signifikant.
+$\rightarrow$ Da das KI den Wert 0 nicht umschließt, ist $\beta_{yx}$ signifikant.
 
 ]
 
@@ -1203,7 +1286,17 @@ class: top, left
 ### Take-aways
 
 .full-width[.content-box-gray[
+* Der Mittelwert der vorhergesagten Werten entspricht dem Mittelwert der empirischen Verteilung.
 
+* Nominalskalierte UVs können in der Regression mittels Dummy-Kodierung verwendet werden.
+
+* Das Ergebnis einer Regression mit dichotomer nominalskalierter UV ist äquivalent zum unabhängigen t-Test.
+
+* Während unstandardisierte Regressionsgewichte $(b)$ in der Orginalmetrik der AV angegeben werden, werden standardisierte Regressionsgewichte $\beta$ in Standardabweichungen (-1 bis +1) angegeben und sind somit über unterschiedliche Modelle hinweg vergleichbar.
+
+* Hypothesentests über Zusammenhänge zwischen $Y$ und $X$ können durchgeführt werden, indem geprüft wird, ob $b \neq 0$ signifikant ist.
+
+* Hypothesen können mittels Wald-Test oder Konfidenzintervall des Steigungsparameters durchgeführt werden.
 ]
 
 ]
