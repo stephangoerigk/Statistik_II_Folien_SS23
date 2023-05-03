@@ -1045,9 +1045,9 @@ class: top, left
 .pull-left[
 #### Signifikanztest für Regressionskoeffizienten
 
+<small>
 **Konfidenzintervall (KI) für den Steigungsparameter**
 
-<small>
 Standardschätzfehler ermitteln:
 
 $$s^2_x =\frac{\sum\limits _{i=1}^{n}(x_{i}-\bar{x})^2}{n-1} = `r round(var(df$IQ),2)`$$
