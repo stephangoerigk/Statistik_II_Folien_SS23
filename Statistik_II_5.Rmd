@@ -1114,7 +1114,7 @@ $$\hat{\sigma}^2_{UV_1\text{x}UV_2}= \frac{QS_{UV_1\text{x}UV_2}}{df_{UV_1\text{
 
 Die Quadratsumme entspricht der Differenz der beobachteten Zellmittelwerte und der erwarteten Zellmittelwerte
 
-$$\hat{\sigma}^2_{UV_1}= \frac{\sum\limits _{i=1}^{p}\sum\limits _{j=1}^{1}n \cdot [\bar{UV_{1}UV_{2}}_{ij} - (\bar{UV_{1i}} + \bar{UV_{2j}}+ \bar{G})]^2}{(p-1 \cdot (q-1)}$$
+$$\hat{\sigma}^2_{UV_1\text{x}UV_2}= \frac{\sum\limits _{i=1}^{p}\sum\limits _{j=1}^{1}n \cdot [\bar{UV_{1}UV_{2}}_{ij} - (\bar{UV_{1i}} + \bar{UV_{2j}}+ \bar{G})]^2}{(p-1) \cdot (q-1)}$$
 ---
 class: top, left
 ### Mehrfaktorielle ANOVA
@@ -1127,9 +1127,9 @@ class: top, left
 
 .pull-left[
 
-$$\hat{\sigma}^2_{UV_1}= \frac{\sum\limits _{i=1}^{p}\sum\limits _{j=1}^{1}n \cdot [\bar{UV_{1}UV_{2}}_{ij} - (\bar{UV_{1i}} + \bar{UV_{2j}}+ \bar{G})]^2}{(p-1 \cdot (q-1)}$$
+$$\hat{\sigma}^2_{UV_1\text{x}UV_2}= \frac{\sum\limits _{i=1}^{p}\sum\limits _{j=1}^{1}n \cdot [\bar{UV_{1}UV_{2}}_{ij} - (\bar{UV_{1i}} + \bar{UV_{2j}}+ \bar{G})]^2}{(p-1) \cdot (q-1)}$$
 $$\bar{G}= `r round(mean(df$Verbesserung), 2)`$$
-$$\hat{\sigma}^2_{UV_1}= \frac{4 \cdot [11.75  - (16 + 18 - 22.25)]^2 + ... + [32.75  - (28.5 + 26.5 - 22.25)]^2}{(2-1 \cdot (2-1)}=196$$
+$$\hat{\sigma}^2_{UV_1\text{x}UV_2}= \frac{4 \cdot [11.75  - (16 + 18 - 22.25)]^2 + ... + [32.75  - (28.5 + 26.5 - 22.25)]^2}{(2-1) \cdot (2-1)}=196$$
 $$F_{UV_1(1,12)}=\frac{\hat{\sigma}^2_{UV_1\text{x}UV_2}}{\hat{\sigma}^2_{Res}}=\frac{196}{16.25}=12.06$$
 ]
 
@@ -1147,6 +1147,18 @@ knitr::kable(df_med,
                   html_font = "Times New Roman")
 ```
 
+```{r echo = F}
+df_med = plyr::ddply(df, c("Dosis"), plyr::summarise,
+                                               N = length(Verbesserung),
+                                               Mittelwert = round(mean(Verbesserung, na.rm = T), 2),
+                                               SD = round(sd(Verbesserung, na.rm = T), 2))
+knitr::kable(df_med,
+             booktabs = T,
+             longtable = F) %>%
+  kable_classic(full_width = F,
+                  font_size = 18,
+                  html_font = "Times New Roman")
+```
 ]
 
 ---
@@ -1240,17 +1252,17 @@ class: top, left
 ### Take-aways
 
 .full-width[.content-box-gray[
-* Der Mittelwert der vorhergesagten Werten entspricht dem Mittelwert der empirischen Verteilung.
+* In der Mehrfaktorielle ANOVA können Haupteffekte und Interaktionseffekte geprüft werden.
 
-* Nominalskalierte UVs können in der Regression mittels Dummy-Kodierung verwendet werden.
+* Haupteffekte beschreiben Einfluss einer UV, ungeachtet des Einflusses der anderen UVs.
 
-* Das Ergebnis einer Regression mit dichotomer nominalskalierter UV ist äquivalent zum unabhängigen t-Test.
+* Interaktionseffekte prüfen die Wechselwirkung der UVs auf die AV.
 
-* Während unstandardisierte Regressionsgewichte $(b)$ in der Orginalmetrik der AV angegeben werden, werden standardisierte Regressionsgewichte $\beta$ in Standardabweichungen (-1 bis +1) angegeben und sind somit über unterschiedliche Modelle hinweg vergleichbar.
+* Jeder Effekt hat einen eigenen Signifikanztest. Dieser wird mittels F-Bruch geprüft, in dem die Zwischenvarianzen an der geschätzten Residualvarianz geprüft werden.
 
-* Hypothesentests über Zusammenhänge zwischen $Y$ und $X$ können durchgeführt werden, indem geprüft wird, ob $b \neq 0$ signifikant ist.
+* Der Hypothesentest der Interaktion nimmt an, dass die beobachteten von den erwarteten Zellmittelwerten abweichen.
 
-* Hypothesen können mittels Wald-Test oder Konfidenzintervall des Steigungsparameters durchgeführt werden.
+* Als EFfektstärken bieten sich die partiellen Maße von $\omega^2$ und $\eta^2:$ $\omega^2_p$ und $\eta^2_p$.
 ]
 
 ]
