@@ -335,7 +335,7 @@ for(i in 1:5){
 $$\hat{\sigma}^2_{A\text{ x }Vpn}  = \frac{[9 - (10.4 + 12.75 - 15.6)]^2 + ..[19 - (19.8 + 12.25 - 15.6)]^2}{(3-1) \cdot (5-1)} = \frac{23.6}{8}=2.95$$
 
 mit
-* $df_{A\text{ x }Vpn}=(3-1) \cdot (4-1)=6$
+* $df_{A\text{ x }Vpn}=(3-1) \cdot (5-1)=8$
 
 ---
 class: top, left
@@ -554,7 +554,7 @@ df_wide_to_long = as.data.frame(pivot_longer(data = df_wide,
                                names_to = "Time", 
                                values_to = "Score"))
 
-head(df_wide, 10)
+head(df_wide_to_long, 10)
 ```
 ]
 ]
