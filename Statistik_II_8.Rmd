@@ -536,14 +536,14 @@ class: top, left
 
 Wide und  Long-Format lassen sich automatisch ineinander überführen:
 
-.code80[
+.code60[
 ```{r echo=FALSE}
 df_wide = df
 ```
 
 .pull-left[
 ```{r}
-head(df_wide, 10)
+df_wide
 ```
 ]
 
@@ -554,7 +554,7 @@ df_wide_to_long = as.data.frame(pivot_longer(data = df_wide,
                                names_to = "Time", 
                                values_to = "Score"))
 
-head(df_wide_to_long, 10)
+head(df_wide_to_long, 15)
 ```
 ]
 ]

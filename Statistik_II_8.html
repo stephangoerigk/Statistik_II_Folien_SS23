@@ -767,13 +767,13 @@ class: top, left
 
 Wide und  Long-Format lassen sich automatisch ineinander überführen:
 
-.code80[
+.code60[
 
 
 .pull-left[
 
 ```r
-head(df_wide, 10)
+df_wide
 ```
 
 ```
@@ -788,6 +788,11 @@ head(df_wide, 10)
 ## 8   8  7 11 13
 ## 9   9  9 14 15
 ## 10 10  9 14 15
+## 11 11 12 15 16
+## 12 12 11 19 21
+## 13 13 11 17 16
+## 14 14 10 14 20
+## 15 15  9 18 22
 ```
 ]
 
@@ -799,7 +804,7 @@ df_wide_to_long = as.data.frame(pivot_longer(data = df_wide,
                                names_to = "Time", 
                                values_to = "Score"))
 
-head(df_wide_to_long, 10)
+head(df_wide_to_long, 15)
 ```
 
 ```
@@ -814,6 +819,11 @@ head(df_wide_to_long, 10)
 ## 8   3   t1    15
 ## 9   3   t2    19
 ## 10  4   t0    10
+## 11  4   t1    17
+## 12  4   t2    21
+## 13  5   t0    10
+## 14  5   t1    15
+## 15  5   t2    19
 ```
 ]
 ]
