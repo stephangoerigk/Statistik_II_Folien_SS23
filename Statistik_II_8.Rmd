@@ -241,7 +241,7 @@ t1 = round(t0 + rnorm(15, 6, 2))[1:5]
 t2 = round(t1 + rnorm(15, 2, 2))[1:5]
 id = 1:5
 df = data.frame(id = id, t0 = t0, t1 = t1, t2 = t2)
-df[["P(m)"]] = rowMeans(df)
+df[["P(m)"]] = round(rowMeans(df[,2:4]), 3)
 df = rbind(df, c("A(i)", colMeans(df[,2:5])))
 
 df[6,5] = mean(c(t0, t1, t2))
