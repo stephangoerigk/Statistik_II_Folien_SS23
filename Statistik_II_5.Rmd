@@ -663,7 +663,7 @@ knitr::kable(df_med,
                   html_font = "Times New Roman")
 ```
 
-$$\hat{\sigma}_{Res}^2 = =\frac{\sum\limits _{i=1}^{p}\sum\limits _{j=1}^{q}QS_{ij}}{p \cdot q \cdot (n-1)}=\frac{QS_{Res}}{df_{Res}}$$
+$$\hat{\sigma}_{Res}^2 = \frac{\sum\limits _{i=1}^{p}\sum\limits _{j=1}^{q}QS_{ij}}{p \cdot q \cdot (n-1)}=\frac{QS_{Res}}{df_{Res}}$$
 ]
 .pull-right[
 ```{r echo = F}
@@ -1114,7 +1114,7 @@ $$\hat{\sigma}^2_{UV_1\text{x}UV_2}= \frac{QS_{UV_1\text{x}UV_2}}{df_{UV_1\text{
 
 Die Quadratsumme entspricht der Differenz der beobachteten Zellmittelwerte und der erwarteten Zellmittelwerte
 
-$$\hat{\sigma}^2_{UV_1\text{x}UV_2}= \frac{\sum\limits _{i=1}^{p}\sum\limits _{j=1}^{1}n \cdot [\bar{UV_{1}UV_{2}}_{ij} - (\bar{UV_{1i}} + \bar{UV_{2j}}+ \bar{G})]^2}{(p-1) \cdot (q-1)}$$
+$$\hat{\sigma}^2_{UV_1\text{x}UV_2}= \frac{\sum\limits _{i=1}^{p}\sum\limits _{j=1}^{q}n \cdot [\bar{UV_{1}UV_{2}}_{ij} - (\bar{UV_{1i}} + \bar{UV_{2j}}+ \bar{G})]^2}{(p-1) \cdot (q-1)}$$
 ---
 class: top, left
 ### Mehrfaktorielle ANOVA

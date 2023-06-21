@@ -165,7 +165,7 @@ class: top, left
 
 **Zerlegung der Gesamtvarianz:**
 
-Wir müsse uns wiederum fragen, weshalb Messungen unterschiedlich (mit Varianz) ausfallen
+Wir müssen uns wiederum fragen, weshalb Messungen unterschiedlich (mit Varianz) ausfallen
 
 Nach wie vor gibt es 2 denkbare Ursachen für die Gesamtvarianz:
 1. systematische Einflüsse (experimentelle Manipulation)
@@ -176,7 +176,7 @@ Spezialfall Messwiederholung:
 * Aufgrund der wiederholten Messungen beziehen sich beide Varianzquellen auf Unterschiede **innerhalb der Personen**
 * Zusätzliche Varianzquelle: Unterschiede **zwischen den Personen** (Personenvarianz $\sigma^2_{Vpn}$ - z.B. Persönlichkeit, Motivation)
 
-$$\sigma_{gesamt}^2= \sigma_{Vpn}^2 + \sigma_{Effekt}^2 +  \hat{\sigma}_{Res}^2$$  
+$$\sigma_{gesamt}^2= \sigma_{Vpn}^2 + \sigma_{Zeit}^2 +  \sigma_{Res}^2$$  
 
 ---
 class: top, left
@@ -768,7 +768,7 @@ class: top, left
 
 * Bei Verletzungen der Spärizitätsannahme können **Korrekturverfahren** angewendet werden, die Überschätzung des Effekts verhindern.
 
-* Wenn Spärizität erfüllt ist, können Post-Hic Vergleiche mittels **Tukey-Test** geprüft werden.
+* Wenn Spärizität erfüllt ist, können Post-Hoc Vergleiche mittels **Tukey-Test** geprüft werden.
 ]
 ]
 
