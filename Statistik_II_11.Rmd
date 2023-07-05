@@ -849,11 +849,11 @@ class: top, left
 .full-width[.content-box-gray[
 * Die **logistische Regression** ist ein statistisches Modell zur Vorhersage von binären oder kategorialen Ergebnissen (z.B. Ja/Nein, Erfolg/Misserfolg oder Krank/gesund).
 
-* Mithilfe der **logsitischen Funktion** (aka. sigmoide Funktion) wird Wertebereich zwischen 0 und 1 begrenzt (Wahrscheinlichkeiten)
+* Mithilfe der **logsitischen Funktion** (aka. sigmoide Funktion) wird Wertebereich zwischen 0 und 1 begrenzt (Wahrscheinlichkeiten).
 
-* Modellparameter werden in **Log-Odds** angegeben (linear skaliert). Diese können durch Exponierung in besser interpretierbare **Odds** umgewandelt werden
+* Modellparameter werden in **Log-Odds** angegeben (linear skaliert). Diese können durch Exponierung in besser interpretierbare **Odds** umgewandelt werden.
 
-* **Statistische Inferenz** (Hypothesentesten) funktioniert entweder über Prüfung einzelner Modellparameter vs. 0 oder mittels Omnibustest $(\chi^2$-verteilt $)$
+* **Statistische Inferenz** (Hypothesentesten) funktioniert entweder über Prüfung einzelner Modellparameter vs. 0 oder mittels Omnibustest $(\chi^2$-verteilt $)$.
 
 * Einfache logistische Regression kann zur **multiplen logistischen Regression** erweitert werden.
 
