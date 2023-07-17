@@ -201,12 +201,15 @@ class: top, left
 
 * Klassisches Design: Behandlung (z.B. Medikament 1) vs. Placebo
 
-* Erweiterung durch eine weitere Behandlungsoption (z.B. Medikament 2)
+* ANOVA: Erweiterung durch eine weitere Behandlungsoption (z.B. Medikament 2)
 
-* Forschungsfragen: 
+***
+
+* Klärbare Forschungsfragen: 
 
   * Unterscheiden sich die 3 Mittelwerte voneinander?
-  * Welche Gruppe ist welcher überlegen (hat den höchsten/niedrigsten Mittelwert)?
+  
+  * Welche Gruppe ist welcher Gruppe überlegen (hat den höheren/niedrigeren Mittelwert)?
 
 ]
 .pull-right[
@@ -240,25 +243,27 @@ class: top, left
 
 #### Warum brauchen wir die ANOVA?
 
-* Wir kennen bereits den t-Test
 
-  * kann Mittelwerte von 2 Gruppen vergleichen
-  * t-Wert prüft, wie wahrscheinliche eine Mittelwertsdifferenz unter Annahme der $H_0$ ist 
 
-.pull-left[
-**FRAGE:**
+* Wir kennen bereits den t-Test:
 
-* Können wir mit dem t-Test auch mehr als 2 Mitttelwerte vergleichen?
-* Wie sähe dies bei unserem Beispiel aus:
+  * t-Test kann Mittelwerte von 2 Gruppen vergleichen
+  
+  * t-Wert prüft, wie wahrscheinlich eine Mittelwertsdifferenz unter Annahme der $H_0$ ist 
+
+***
+
+**Intuitive Überlegung:**
+
+* Können wir mit dem t-Test auch mehr als 2 Mittelwerte vergleichen?
+
+* Wie sähe dies bei unserem Beispiel aus?
   * t-Test (1): Placebo vs. Medikament 1
   * t-Test (2): Placebo vs. Medikament 2
   * t-Test (3): Medikament 1 vs. Medikament 2
 
-$\rightarrow$ Ist zwar mit steigender Anzahl Vergleiche immer aufwendiger, aber man könnte beim bekannten Verfahren bleiben!
-]
-.pull-right[
+$\rightarrow$ Zwar mit steigender Anzahl Vergleiche immer aufwendiger, aber man könnte bekanntes Verfahren beibehalten!
 
-]
 
 ---
 class: top, left
@@ -274,7 +279,7 @@ class: top, left
 .pull-left[
 **FRAGE:**
 
-* Können wir mit dem t-Test auch mehr als 2 Mitttelwerte vergleichen?
+* Können wir mit dem t-Test auch mehr als 2 Mittelwerte vergleichen?
 * Wie sähe dies bei unserem Beispiel aus:
   * t-Test (1): Placebo vs. Medikament 1
   * t-Test (2): Placebo vs. Medikament 2
@@ -295,7 +300,7 @@ class: top, left
 
 #### Warum brauchen wir die ANOVA?
 
-** $\alpha$ -Fehlerkumulierung**
+** $\alpha$-Fehlerkumulierung**
 
 * Tritt auf, wenn zur Prüfung einer Hypothese mehrere Tests an denselben Daten gerechnet werden
 
@@ -303,11 +308,11 @@ GRUND:
 
 * Jeder Test testet gegen das a priori festgelegte Niveau (z.B. $\alpha=.05$)
 
-* Zur Erinnerung: $\alpha$ -Fehler = Wahrscheinlichkeit für einen Fehler 1. Art $(H_0$ fälschlicherweise verwerfen)
+* Zur Erinnerung: $\alpha$-Fehler = Wahrscheinlichkeit für einen Fehler 1. Art $(H_0$ fälschlicherweise verwerfen)
 
 * Beim Rechnen mehrerer Tests kumuliert sich der $\alpha$-Fehler (kumulieren = anhäufen)
 
-* Folge: Das Gesamt $-\alpha-$ Niveau entspricht nicht mehr dem der Einzeltests:
+* Folge: Das Gesamt $\alpha-$Niveau entspricht nicht mehr dem der Einzeltests:
 
 $$\alpha_{gesamt}=1-(1-\alpha_{Test})^m$$ 
 
@@ -323,16 +328,18 @@ class: top, left
 
 **Vorteil der ANOVA:**
 
-* Die ANOVA ist ein sogenannter **Omnibustest**
+* Die ANOVA ist ein sogenannter **Omnibustest**.
 
-* Es werden alle Mittelwerte auf einmal miteinander verglichen.
+* D.h. es werden alle Mittelwerte auf einmal miteinander verglichen.
 
-* $H_0$ t-Tests:
+Veranschaulichung:
+
+* $H_0:$ t-Test (x3)
   * $\mu_1 = \mu_2$
   * $\mu_1 = \mu_3$
   * $\mu_2 = \mu_3$
 
-* $H_0$ ANOVA:
+* $H_0:$ ANOVA
   * $\mu_1 = \mu_2 = \mu_3$
 
 ---
@@ -341,19 +348,19 @@ class: top, left
 
 #### Warum brauchen wir die ANOVA?
 
-** $\alpha$ -Fehlerkumulierung**
+** $\alpha$-Fehlerkumulierung**
 
-* Die $\alpha$ -Fehlerkumulierung tritt nur dann auf, wenn mehrere Tests für eine Hypothese an den selben Daten durchgeführt werden
+* Die $\alpha$-Fehlerkumulierung tritt nur dann auf, wenn mehrere Tests für eine Hypothese an denselben Daten durchgeführt werden
 
 * Würden für jeden Einzelvergleich neue Stichproben gezogen, wären mehrere Tests zulässig
 
 VORSICHT: 
 
-* $\alpha$ -Fehlerkumulierung gilt grundsätzlich für alle Arten statistischer Tests!
+* $\alpha$-Fehlerkumulierung gilt grundsätzlich für alle Arten statistischer Tests!
 
-  * Gilt auch für ANOVAs: mehrere ANOVAs am selben Datensatz durchgeführt führen auch zu $\alpha$ -Fehlerkumulierung
+  * Gilt auch für ANOVAs: mehrere ANOVAs am selben Datensatz durchgeführt führen auch zu $\alpha$-Fehlerkumulierung
   
-* Bei dem einmaligen Vergleich mehrerer Mittelwerte befreit uns die ANOVA aber von diesem Problem
+* Bei dem **einmaligen** Vergleich mehrerer Mittelwerte befreit uns die ANOVA aber von diesem Problem
 
 ---
 class: top, left
@@ -363,14 +370,14 @@ class: top, left
 
 **Verringerung der Teststärke $(\lambda)$**
 
-* mehrere t-Tests $\rightarrow$ es gehen immer nur Teile der Gesamtstichprobe in die Analyse ein
+* Beim Rechnnen mehrerer t-Tests $\rightarrow$ es gehen immer nur Teile der Gesamtstichprobe in die Analyse ein
 
 * z.B. 3 Tests: Jeder Test mit $\frac{2}{3}$ der Gesamtstichprobe (bei gleich großen Gruppen)
 
 * Test, der alle Gruppen gleichzeitig vergleicht, hat eine höhere Teststärke:
 
 $$\lambda=\phi^2 \cdot N = \frac{\Omega^2}{1-\Omega^2}\cdot N $$
-$\rightarrow$ Unter Zugrundelegung des gleichen Populationseffekts $(\Omega^2)$ ist die Teststärke $(\lambda)$ direkt von Stichprobengröße (N) abhängig
+$\rightarrow$ Unter Zugrundelegung des gleichen Populationseffekts $(\Omega^2)$ ist die Teststärke $(\lambda)$ direkt von Stichprobengröße $(N)$ abhängig.
 
 ---
 class: top, left
@@ -378,19 +385,21 @@ class: top, left
 
 #### Prinzip der Varianzanalyse
 
-* Name der Varianzanalyse:
+**Name der Varianzanalyse:**
 
-  * Simultanvergleich der Mittelwerte wird über Betrachtung verschiedener Varianzen erreicht
+* Simultanvergleich der Mittelwerte wird über Betrachtung von Varianzen (systematische und unsystematische) erreicht
   
-  * Aus dem Vergleich der Varianzen wird die Entscheidungsregel abgeleitet
+* Aus dem Vergleich dieser Varianzen wird die Entscheidungsregel abgeleitet
 
-Historisch:
+***
+
+**Historisch:**
 
 * Geht zurück auf Sir Ronald Fisher
 
-* Versteht ANOVA als Vergleich systematischer Einflüsse (systematische Varianz) und unsystematischer Einflüsse (Residualvarianz)
+* ANOVA = Vergleich systematischer Einflüsse (systematische Varianz) und unsystematischer Einflüsse (Residualvarianz)
 
-* Quotient der beiden Varianzen ergibt den F-Wert (Teststatistik - ähnlich t-Wert)
+* Quotient der beiden Varianzen ergibt den F-Wert (Teststatistik der ANOVA - ähnlich t-Wert)
 
 * Daher wird ANOVA auch "F-Test" genannt
 
@@ -412,14 +421,16 @@ kable(df[,])
 ]
 
 .pull-right[
-Verbesserung scheint sich zwischen Gruppen zu unterscheiden:
+Verbesserung scheint sich (rein numerisch) zwischen Gruppen zu unterscheiden:
 
 * $\bar{x}_{Placebo}=7$
 * $\bar{x}_{Med1}=11$
 * $\bar{x}_{Med2}=12.33$
+
 ]
+
 <br>
-Größe der Unterschiede zwischen den gemessenen Werten = Varianz
+Größe der Unterschiede zwischen den gemessenen Werten = Varianz $(\hat{\sigma}_x^2):$
 
 $$\hat{\sigma}_x^2=\frac{\sum\limits _{i=1}^{n}(x_{i}-\bar{x})^2}{n-1}$$
 ---
@@ -439,7 +450,8 @@ $$\hat{\sigma}_x^2=\frac{\sum\limits _{i=1}^{n}(x_{i}-\bar{x})^2}{n-1}$$
   * QS = Quadratsumme
   * df = Freiheitsgerade der Verteilung
 
-$$QS_x=\sum\limits _{i=1}^{n}(x_{i}-\bar{x})^2; df_x=n-1$$
+$$QS_x=\sum\limits _{i=1}^{n}(x_{i}-\bar{x})^2$$
+$$df_x=n-1$$
 
 Allgemeine Schreibweise:
 
@@ -452,13 +464,15 @@ class: top, left
 
 #### Prinzip der Varianzanalyse
 
-**Gesamtvarianz:**
+**Die Gesamtvarianz:**
 
-* Variation aller Messwerte, ohne Unterteilung in Versuchsbedingungen (Gruppen)
+* Variation aller Messwerte, **ohne Unterteilung in Versuchsbedingungen** (Gruppen)
 
-* Gibt an, wie stark sich alle Personen voneinander unterscheiden
+* Gibt an, wie stark sich Personen, ungeachtet ihrer Gruppenzugehörigkeit, voneinander unterscheiden
 
-* Berechnung: Jeder Wert in Varianzformel vom Gesamtmittelwert $(\bar{G})$ abziehen
+Berechnung: 
+
+* Jeden Wert in Varianzformel vom Gesamtmittelwert $(\bar{G})$ abziehen
 
 * Gesamtmittelwert $(\bar{G})$: Mittelwert aller Messwerte der gesamten Stichprobe
 
@@ -471,7 +485,7 @@ class: top, left
 .pull-left[
 
 <small>
-**Gesamtvarianz:**
+**Die Gesamtvarianz:**
 
 Beispiel:
 
@@ -512,13 +526,17 @@ class: top, left
 
 **Zerlegung der Gesamtvarianz:**
 
-Fragen:
+Zentrale, die Gesamtvarianz betreffende, Fragen:
+
 * Warum variieren die gemessenen Werte der Personen?
+
 * Warum verbessern sich einige Patienten stärker als andere?
 
 Bei der ANOVA gibt es 2 Ursachen für die Gesamtvarianz:
-* systematische Einflüsse
-* unsystematische Einflüsse
+
+1. systematische Einflüsse
+
+2. unsystematische Einflüsse
 
 $$\hat{\sigma}_{gesamt}^2=\hat{\sigma}_{sys}^2= + \hat{\sigma}_{Res}^2$$
 
@@ -537,18 +555,20 @@ class: top, left
 
 * z.B. Vorher klar zugeteilte Verabreichung eines Medikaments
 
-* Können auch natürliche Gruppenzugehörigkeiten sein (z.B. Geschlecht, etc.)
+* Können auch natürliche Gruppenzugehörigkeiten sein (z.B. Geschlecht, Diagnose, etc.)
+
+* gemessen als **systematische Varianz/Effektvarianz**
 ]
 
 .pull-right[
 **Unsystematische Einflüsse:**
 * Wirken auf die Meswerte, sind aber nicht von Studie intendiert
 
-* Unterschiede zwischen Personen, unabhängig von Manipuation
+* Unterschiede zwischen Personen, unabhängig von Manipulation
 
 * können zeitlich stabil oder instabil sein (z.B. Motivation, Tagesstimmung, Persönlichkeit, Messfehler...)
 
-$\rightarrow$ nennt man auch Residualvarianz
+* gemessen als **Residualvarianz**
 ]
 
 ---
@@ -568,7 +588,7 @@ class: top, left
 * Unterschiede **zwischen den Gruppen** spielen für diese Berechnung keine Rolle
 
 $$\hat{\sigma}_i^2=\frac{\sum\limits _{m=1}^{n}(x_{mi}-\bar{A})^2}{n-1}$$
-$\rightarrow$ Quadrierte Abweichung jedes Messwerts von seinem Gruppenmittelwert
+$\rightarrow$ Quadrierte Abweichung jedes Messwerts $(x_{mi})$ von seinem jeweiligen Gruppenmittelwert $(\bar{A})$
 
 <small>
 Good-to-know: "Varianz innerhalb" Zieht sich streng genommen auf die Varianzen innerhalb jeder einzelnen Gruppe. Der Begriff wird jedoch auch synonym für die Residualvarianz, also die über alle Gruppen hinweg gemittelte Varianz innerhalb verwendet
@@ -587,7 +607,11 @@ class: top, left
 
 * Dies ist allerdings auf Stichprobenebene (kleinere Gruppe als Gesamtpopulation) selten der Fall
 
-Folge: Die Berechnung der **durchschnittlichen Varianz innerhalb** erfolgt durch die Addition der Varianzen innerhalb der einzelnen Gruppen geteilt durch die Anzahl der Gruppen
+Folge: 
+
+* Die Berechnung der **durchschnittlichen Varianz innerhalb** erfolgt durch die Addition der Varianzen innerhalb der einzelnen Gruppen 
+
+* Diese Summe wird geteilt durch die Anzahl der Gruppen $(p)$
 
 $$\hat{\sigma}_{Res}^2=\hat{\sigma}_{innerhalb}^2 = \frac{\sum\limits _{i=1}^{p}\hat{\sigma}_{i}^2}{p}=\frac{\hat{\sigma}_{1}^2 + \hat{\sigma}_{2}^2+ ...+\hat{\sigma}_{p}^2}{p}$$
 ---
@@ -602,7 +626,7 @@ Unter der Annahme gleich großer Gruppen, lässt sich die Formel auch wie folgt 
 
 $$\hat{\sigma}_{Res}^2=\hat{\sigma}_{innerhalb}^2 = \frac{\sum\limits _{i=1}^{p}\hat{\sigma}_{i}^2}{p}=\frac{\sum\limits _{i=1}^{p}\sum\limits _{m=1}^{n}(x_{mi}-\bar{A}_i)^2}{p \cdot (n-1)}$$
 
-Diese Darstellung ermöglicht die separate Betrachtung von Quadratsummen und Freiheitsgraden:
+Diese Darstellung ermöglicht die separate Betrachtung von Quadratsummen und Freiheitsgraden (Schreibweise von oben):
 
 $$\hat{\sigma}_{innerhalb}^2= \frac{QS_{innerhalb}}{df_{innerhalb}}$$
 
@@ -621,7 +645,7 @@ $$\hat{\sigma}_{innerhalb}^2= \frac{\hat{\sigma}_{Placebo}^2 + \hat{\sigma}_{Med
 Berechnung Varianz innerhalb Gruppe Placebo:
 
 $$\hat{\sigma}_{Placebo}^2=\frac{\sum\limits _{m=1}^{n}(x_{mi}-\bar{A})^2}{n-1}=\frac{(6-7)^2 + (7-7)^2 + (7-7)^2+(8-7)^2}{4-1}=0.67$$
-Für die anderen beiden Gruppen ergibt sich (ann nachgerechnet werden):
+Für die anderen beiden Gruppen ergibt sich (kann nachgerechnet werden):
 
 $$\hat{\sigma}_{Med1}^2 = \hat{\sigma}_{Med2}^2=0.67;df_{innerhalb}=p \cdot (n-1)$$
 $$\hat{\sigma}_{innerhalb}^2= \frac{0.67 + 0.67 + 0.67}{3}=0.67$$
@@ -641,7 +665,9 @@ Grund:
 
 * Jeder Messwert wird mit dem eigenen Gruppenmittelwert verglichen
 
-$\rightarrow$ Die Gruppen werden unabhängig betrachtet und der Durschnitt aus ihren Varianzen gebildet (Varianz innerhalb soll nur unsystematische Einflüsse erfassen)
+* Die Gruppen werden unabhängig betrachtet und der Durschnitt aus ihren Varianzen gebildet 
+
+* Denn: Varianz innerhalb soll nur unsystematische Einflüsse erfassen
 
 ---
 class: top, left
@@ -704,7 +730,7 @@ $$\hat{\sigma}_{zwischen}^2= \frac{n \cdot \sum\limits _{i=1}^{p}(\bar{A}_i-\bar
 
 * Die **Varianz zwischen** den Gruppen $(\hat{\sigma}_{zwischen}^2=28)$ ist deutlich größer als die zuvor berechnete Residualvarianz $(\hat{\sigma}_{innerhalb}^2=0.67)$.
 
-* Frage: Ist dieser Unterschied statistisch signifikant?
+* Frage (s.h. Hypothese): Ist dieser Unterschied statistisch signifikant?
 
 ---
 class: top, left
@@ -736,7 +762,7 @@ class: top, left
 
 * F-Wert ist die Teststatistik der ANOVA (wie t-Wert beim t-Test)
 
-Mögliche Werte und Interpretation:
+Mögliche Werte und deren Interpretation:
 
 * $F=1$
 
@@ -757,13 +783,13 @@ class: top, left
 .pull-left[
 **Signifikanztestung der ANOVA - Der F-Quotient:**
 
-* Annahme der $H_0$ erlaubt  Konstruktion der F-Verteilung (Verteilung aller F-Werte die unter dieser Annahme auftreten können)
+* Annahme der $H_0$ erlaubt Konstruktion der F-Verteilung (Verteilung aller F-Werte die unter dieser Annahme auftreten können)
 
 * Unter der $H_0$ hat die F-Verteilung einen Mittelwert von 1 (F=1)
 
-  $\rightarrow$ bei Gleichheit der Populationsmittelwerte besteht **Varianz zwischen** nur auch Residualvarianz und nimmt gleichen Wert wie **Varianz innerhalb** an
+* Bei Gleichheit der Populationsmittelwerte besteht **Varianz zwischen** nur aus Residualvarianz und nimmt gleichen Wert wie **Varianz innerhalb** an
   
-* Negative Werte sind nicht möglich, da Varianzen durch Quadrierung imer positiv sind
+* Negative Werte sind nicht möglich, da Varianzen durch Quadrierung immer positiv sind
 ]
 
 .pull-right[
@@ -785,11 +811,11 @@ class: top, left
 
 * Unter der $H_0$ ist ein F-Wert von 1 oder nahe 1 zu erwarten
 
-* Wahrscheinlichkeit für einen F-Wert (in Abhängigkeit von Gruppenzahl und Stichprobengröße) kann in der F-Tabelle nachgelesen werden
+* Wahrscheinlichkeit für einen F-Wert (in Abhängigkeit von Gruppenzahl und Stichprobengröße) kann in der F-Tabelle abgelesen werden
 
 * Logik: Vergleich empirischer F-Wert $(F_{emp})$ mit kritischem F-Wert $(F_{krit})$ unter Annahme des Signifikanzniveaus $(\alpha=.05)$
 
-Wenn $F_{emp} > F_{krit}$ $\rightarrow$ ist ANOVA signifikant.
+Wenn $F_{emp} > F_{krit}$ $\rightarrow$ ist die ANOVA signifikant.
 ]
 
 .pull-right[
@@ -809,11 +835,14 @@ class: top, left
 .pull-left[
 **Signifikanztestung der ANOVA - Der F-Quotient:**
 
-Logik der F-Verteilung analog zum t-Test:
-* aus 3 Populationen werden jeweils n Personen gezogen
-* Aus Messwerten werden inner- und zwische Varianz sowieder F-Quotient
+Logik der F-Verteilung (analog zum t-Test):
+* Aus 3 Populationen werden jeweils $n$ Personen gezogen
+
+* Aus Messwerten werden Inner- und Zwischenvarianz  sowie der F-Quotient berechnet
+
 * Vorgang wird (idealerweise unendlich oft) wiederholt
-* resultierende F-Werte ergeben, beim Eintragen in das Koordinatensystem die F-Verteilung
+
+* Resultierende F-Werte ergeben beim Eintragen in das Koordinatensystem die F-Verteilung
 ]
 
 .pull-right[
@@ -833,11 +862,11 @@ class: top, left
 
 **Entscheidungsregel beim F-Test:**
 
-* Bestimmung des kritischen F-Werts (bei $\alpha=.05$ und p = 3 und n = 4):
+* Bestimmung des kritischen F-Werts (bei $\alpha=.05$ und $p = 3$ und $n = 4$):
 
 * Auswählen von Zähler und Nennerfreiheitsgraden
 
-* Fläche ist $1-\alpha$
+* Fläche $= 1-\alpha$
 
 * $F_{krit}=4.26$
 
@@ -858,17 +887,15 @@ class: top, left
 
 **Alternativhypothese der ANOVA - Was bedeutet ein signifikanter Test?**
 
-* Zwischenvarianz größer als Varianz innerhalb
-
-* Manipulation verursacht signifikanten Teil der Gesamtvarianz
+* Zwischenvarianz größer als Varianz innerhalb (Manipulation verursacht signifikanten Teil der Gesamtvarianz)
 
 * Mit anderen Worten: Es besteht ein signifikanter (systematischer) Unterschied zwischen den Gruppen
 
-* ACHTUNG: Nur statistische Signifikanz $\rightarrow$ für Relevanz auf der inhaltlichen Ebene, müssen Effektstärken berücksichtigt werden
+* ACHTUNG: Nur statistische Signifikanz $\rightarrow$ für Relevanz auf inhaltlicher/klinischer Ebene, müssen Effektstärken berücksichtigt werden
 
 **VORSICHT:**
 
-* Eine signifikante ANOVA bedeutet lediglich, dass sich mindestend ein Gruppenmittelwert signifikant von den anderen unterscheidet 
+* Eine signifikante ANOVA bedeutet lediglich, dass sich **mindestens ein Gruppenmittelwert** signifikant von den anderen unterscheidet 
 
 * Zwischen welchen Gruppen der Unterschied besteht, lässt sich noch nicht sehen
 
@@ -880,7 +907,7 @@ class: top, left
 
 #### Einfaktorielle ANOVA - Rechenbeispiel in R
 
-Unsere Stichprobe ist auf insgesamt $N=150$ (n=50 pro Gruppe) erweitert worden:
+Unsere Stichprobe ist, für ein realisteres Szenario, auf insgesamt $N=150$ $(n=50$ pro Gruppe) erweitert worden:
 
 ```{r echo = F}
 set.seed(123)
@@ -905,9 +932,13 @@ class: top, left
 
 Anzeigen der Deskriptivstatistiken pro Gruppe:
 
+.code60[
+
 ```{r}
 psych::describe.by(df[,c("Symptome", "Gruppe")], "Gruppe")
 ```
+
+]
 
 ---
 class: top, left
@@ -934,9 +965,9 @@ anova(lm(Symptome ~ Gruppe, data = df))
 
 * $df_{innerhalb}=p \cdot (n-1) = 3 \cdot (50-1)=147$
 
-* $\hat{\sigma}_{zwischen}^2=\frac{QS_zwischen}{df_{zwischen}}=\frac{582.4}{2}=291.2$
+* $\hat{\sigma}_{zwischen}^2=\frac{QS_{zwischen}}{df_{zwischen}}=\frac{582.4}{2}=291.2$
 
-* $\hat{\sigma}_{innerhalb}^2=\frac{QS_innerhalb}{df_{innerhalb}}=\frac{2082.2}{147}=14.17$
+* $\hat{\sigma}_{innerhalb}^2=\frac{QS_{innerhalb}}{df_{innerhalb}}=\frac{2082.2}{147}=14.17$
 
 * $F_{(2,147)}=\frac{291.20}{14.17}=20.56$
 ]
