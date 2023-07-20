@@ -262,7 +262,7 @@ class: top, left
   * t-Test (2): Placebo vs. Medikament 2
   * t-Test (3): Medikament 1 vs. Medikament 2
 
-`\(\rightarrow\)` Zwar mit steigender Anzahl Vergleiche immer aufwendiger, aber man könnte bekanntes Verfahren beibehalten!
+`\(\rightarrow\)` Zwar mit steigender Anzahl an Vergleichen immer aufwendiger, aber man könnte bekanntes Verfahren beibehalten!
 
 
 ---
@@ -274,7 +274,7 @@ class: top, left
 * Wir kennen bereits den t-Test
 
   * kann Mittelwerte von 2 Gruppen vergleichen
-  * t-Wert prüft, wie wahrscheinliche eine Mittelwertsdifferenz unter Annahme der `\(H_0\)` ist 
+  * t-Wert prüft, wie wahrscheinlich eine Mittelwertsdifferenz unter Annahme der `\(H_0\)` ist 
 
 .pull-left[
 **FRAGE:**
@@ -285,7 +285,7 @@ class: top, left
   * t-Test (2): Placebo vs. Medikament 2
   * t-Test (3): Medikament 1 vs. Medikament 2
 
-`\(\rightarrow\)` Ist zwar mit steigender Anzahl Vergleiche immer aufwendiger, aber man könnte beim bekannten Verfahren bleiben!
+`\(\rightarrow\)` Ist zwar mit steigender Anzahl an Vergleichen immer aufwendiger, aber man könnte beim bekannten Verfahren bleiben!
 ]
 .pull-right[
 **Es ergeben sich jedoch 2 Probleme:**
@@ -579,7 +579,7 @@ Bei der ANOVA gibt es 2 Ursachen für die Gesamtvarianz:
 
 2. unsystematische Einflüsse
 
-`$$\hat{\sigma}_{gesamt}^2=\hat{\sigma}_{sys}^2= + \hat{\sigma}_{Res}^2$$`
+`$$\hat{\sigma}_{gesamt}^2=\hat{\sigma}_{sys}^2 + \hat{\sigma}_{Res}^2$$`
 
 ---
 class: top, left
@@ -985,12 +985,12 @@ psych::describe.by(df[,c("Symptome", "Gruppe")], "Gruppe")
 ##          vars  n  mean   sd median trimmed  mad  min   max range  skew kurtosis   se
 ## Symptome    1 50 11.59 3.62  11.61   11.58 3.01 1.76 19.75 17.99 -0.04     0.05 0.51
 ## Gruppe*     2 50  1.00 0.00   1.00    1.00 0.00 1.00  1.00  0.00   NaN      NaN 0.00
-## ------------------------------------------------------------------------------------------------------------------ 
+## ------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
 ## Gruppe: Medikament.2
 ##          vars  n  mean   sd median trimmed  mad  min  max range skew kurtosis   se
 ## Symptome    1 50 10.98 3.96  10.78   10.74 3.82 3.79 20.4 16.61 0.41    -0.38 0.56
 ## Gruppe*     2 50  1.00 0.00   1.00    1.00 0.00 1.00  1.0  0.00  NaN      NaN 0.00
-## ------------------------------------------------------------------------------------------------------------------ 
+## ------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
 ## Gruppe: Placebo
 ##          vars  n mean  sd median trimmed  mad   min   max range skew kurtosis   se
 ## Symptome    1 50 7.14 3.7   6.71    7.06 3.67 -0.87 15.68 16.54 0.16    -0.52 0.52

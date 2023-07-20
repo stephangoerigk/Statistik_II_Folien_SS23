@@ -262,7 +262,7 @@ class: top, left
   * t-Test (2): Placebo vs. Medikament 2
   * t-Test (3): Medikament 1 vs. Medikament 2
 
-$\rightarrow$ Zwar mit steigender Anzahl Vergleiche immer aufwendiger, aber man könnte bekanntes Verfahren beibehalten!
+$\rightarrow$ Zwar mit steigender Anzahl an Vergleichen immer aufwendiger, aber man könnte bekanntes Verfahren beibehalten!
 
 
 ---
@@ -274,7 +274,7 @@ class: top, left
 * Wir kennen bereits den t-Test
 
   * kann Mittelwerte von 2 Gruppen vergleichen
-  * t-Wert prüft, wie wahrscheinliche eine Mittelwertsdifferenz unter Annahme der $H_0$ ist 
+  * t-Wert prüft, wie wahrscheinlich eine Mittelwertsdifferenz unter Annahme der $H_0$ ist 
 
 .pull-left[
 **FRAGE:**
@@ -285,7 +285,7 @@ class: top, left
   * t-Test (2): Placebo vs. Medikament 2
   * t-Test (3): Medikament 1 vs. Medikament 2
 
-$\rightarrow$ Ist zwar mit steigender Anzahl Vergleiche immer aufwendiger, aber man könnte beim bekannten Verfahren bleiben!
+$\rightarrow$ Ist zwar mit steigender Anzahl an Vergleichen immer aufwendiger, aber man könnte beim bekannten Verfahren bleiben!
 ]
 .pull-right[
 **Es ergeben sich jedoch 2 Probleme:**
@@ -538,7 +538,7 @@ Bei der ANOVA gibt es 2 Ursachen für die Gesamtvarianz:
 
 2. unsystematische Einflüsse
 
-$$\hat{\sigma}_{gesamt}^2=\hat{\sigma}_{sys}^2= + \hat{\sigma}_{Res}^2$$
+$$\hat{\sigma}_{gesamt}^2=\hat{\sigma}_{sys}^2 + \hat{\sigma}_{Res}^2$$
 
 ---
 class: top, left
