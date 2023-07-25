@@ -111,7 +111,7 @@ class: top, left
 
 * Messwiederholte Daten sind **abhängig** voneinander 
 
-* Gruppenverglieche sind  **unabhängig** voneinander
+* Gruppenvergleiche sind  **unabhängig** voneinander
 
 ]
 .pull-right[
@@ -241,7 +241,7 @@ class: top, left
 
 #### Statistische Auswertung von Mixed Designs
 
-In der angewandte Statistik sind 2 Arten von Modellen gängig:
+In der angewandten Statistik sind 2 Arten von Modellen zur Auswertung von Mixed Designs gängig:
 
 **1. Mixed ANOVA**
 
