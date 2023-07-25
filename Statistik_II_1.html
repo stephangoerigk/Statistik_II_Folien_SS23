@@ -526,7 +526,7 @@ Beispiel:
   &lt;tr&gt;
    &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:right;"&gt; 7 &lt;/td&gt;
@@ -632,7 +632,7 @@ class: top, left
 `\(\rightarrow\)` Quadrierte Abweichung jedes Messwerts `\((x_{mi})\)` von seinem jeweiligen Gruppenmittelwert `\((\bar{A})\)`
 
 &lt;small&gt;
-Good-to-know: "Varianz innerhalb" Zieht sich streng genommen auf die Varianzen innerhalb jeder einzelnen Gruppe. Der Begriff wird jedoch auch synonym für die Residualvarianz, also die über alle Gruppen hinweg gemittelte Varianz innerhalb verwendet
+Good-to-know: "Varianz innerhalb" bezieht sich streng genommen auf die Varianzen innerhalb jeder einzelnen Gruppe. Der Begriff wird jedoch auch synonym für die Residualvarianz, also die über alle Gruppen hinweg gemittelte Varianz innerhalb verwendet
 &lt;/small&gt;
 
 
@@ -648,7 +648,7 @@ class: top, left
 
 * Dies ist allerdings auf Stichprobenebene (kleinere Gruppe als Gesamtpopulation) selten der Fall
 
-Folge: 
+Idee, um ungleiche Varianzen zu berücksichtigen: 
 
 * Die Berechnung der **durchschnittlichen Varianz innerhalb** erfolgt durch die Addition der Varianzen innerhalb der einzelnen Gruppen 
 
@@ -724,7 +724,7 @@ class: top, left
 
 **Kontext der Varianzanalyse (Varianz zwischen): **
 
-* Experimenteller Einfluss auf die Gesamtvarianz wird pber die Unterschiede der Gruppenmittelwerte geschätzt
+* Experimenteller Einfluss auf die Gesamtvarianz wird über die Unterschiede der Gruppenmittelwerte geschätzt
 
 * Unterschiede zwischen Gruppenmittelwerten = **Varianz zwischen**
 
@@ -750,7 +750,7 @@ class: top, left
 
 * Freiheitsgrade ergeben sich aus der Anzahl der Gruppen
 
-* Der Zähler muss mit der Anzahl der Versuchspersonen (n) in einer GRuppe multipliziert werden, um Genauigkeit der Mittelwerte als Populationsschätzer zu berücksichtigen
+* Der Zähler muss mit der Anzahl der Versuchspersonen (n) in einer Gruppe multipliziert werden, um Genauigkeit der Mittelwerte als Populationsschätzer zu berücksichtigen
 
 `$$\hat{\sigma}_{zwischen}^2=\frac{QS_{zwischen}}{df_{zwischen}}= \frac{n \cdot \sum\limits _{i=1}^{p}(\bar{A}_i-\bar{G})^2}{p-1}$$`
 Wenn kein Effekt der UV vorliegt...
@@ -875,7 +875,7 @@ class: top, left
 Logik der F-Verteilung (analog zum t-Test):
 * Aus 3 Populationen werden jeweils `\(n\)` Personen gezogen
 
-* Aus Messwerten werden Inner- und Zwischenvarianz  sowie der F-Quotient berechnet
+* Aus Messwerten werden Inner- und Zwischenvarianz sowie der F-Quotient berechnet
 
 * Vorgang wird (idealerweise unendlich oft) wiederholt
 
@@ -924,7 +924,7 @@ class: top, left
 
 * Mit anderen Worten: Es besteht ein signifikanter (systematischer) Unterschied zwischen den Gruppen
 
-* ACHTUNG: Nur statistische Signifikanz `\(\rightarrow\)` für Relevanz auf inhaltlicher/klinischer Ebene, müssen Effektstärken berücksichtigt werden
+* ACHTUNG: Nur statistische Signifikanz `\(\rightarrow\)` für Relevanz auf inhaltlicher/klinischer Ebene müssen Effektstärken berücksichtigt werden
 
 **VORSICHT:**
 
@@ -940,7 +940,7 @@ class: top, left
 
 #### Einfaktorielle ANOVA - Rechenbeispiel in R
 
-Unsere Stichprobe ist, für ein realisteres Szenario, auf insgesamt `\(N=150\)` `\((n=50\)` pro Gruppe) erweitert worden:
+Unsere Stichprobe ist, für ein realisteres Szenario mit mehr Teststärke, auf insgesamt `\(N=150\)` `\((n=50\)` pro Gruppe) erweitert worden:
 
 
 
@@ -985,12 +985,12 @@ psych::describe.by(df[,c("Symptome", "Gruppe")], "Gruppe")
 ##          vars  n  mean   sd median trimmed  mad  min   max range  skew kurtosis   se
 ## Symptome    1 50 11.59 3.62  11.61   11.58 3.01 1.76 19.75 17.99 -0.04     0.05 0.51
 ## Gruppe*     2 50  1.00 0.00   1.00    1.00 0.00 1.00  1.00  0.00   NaN      NaN 0.00
-## ------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
+## ------------------------------------------------------------------------------------------------------------------------ 
 ## Gruppe: Medikament.2
 ##          vars  n  mean   sd median trimmed  mad  min  max range skew kurtosis   se
 ## Symptome    1 50 10.98 3.96  10.78   10.74 3.82 3.79 20.4 16.61 0.41    -0.38 0.56
 ## Gruppe*     2 50  1.00 0.00   1.00    1.00 0.00 1.00  1.0  0.00  NaN      NaN 0.00
-## ------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
+## ------------------------------------------------------------------------------------------------------------------------ 
 ## Gruppe: Placebo
 ##          vars  n mean  sd median trimmed  mad   min   max range skew kurtosis   se
 ## Symptome    1 50 7.14 3.7   6.71    7.06 3.67 -0.87 15.68 16.54 0.16    -0.52 0.52

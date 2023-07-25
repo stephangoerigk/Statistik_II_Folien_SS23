@@ -492,7 +492,7 @@ Beispiel:
 ```{r echo = F}
 df = data.frame(Placebo = c(6,7,7,8),
                 `Medikament 1` = c(10,11,11,12),
-                `Medikament 2` = c(NA, 12, 12, 13))
+                `Medikament 2` = c(11, 12, 12, 13))
 kable(df[,])
 ```
 ]
@@ -591,7 +591,7 @@ $$\hat{\sigma}_i^2=\frac{\sum\limits _{m=1}^{n}(x_{mi}-\bar{A})^2}{n-1}$$
 $\rightarrow$ Quadrierte Abweichung jedes Messwerts $(x_{mi})$ von seinem jeweiligen Gruppenmittelwert $(\bar{A})$
 
 <small>
-Good-to-know: "Varianz innerhalb" Zieht sich streng genommen auf die Varianzen innerhalb jeder einzelnen Gruppe. Der Begriff wird jedoch auch synonym für die Residualvarianz, also die über alle Gruppen hinweg gemittelte Varianz innerhalb verwendet
+Good-to-know: "Varianz innerhalb" bezieht sich streng genommen auf die Varianzen innerhalb jeder einzelnen Gruppe. Der Begriff wird jedoch auch synonym für die Residualvarianz, also die über alle Gruppen hinweg gemittelte Varianz innerhalb verwendet
 </small>
 
 
@@ -607,7 +607,7 @@ class: top, left
 
 * Dies ist allerdings auf Stichprobenebene (kleinere Gruppe als Gesamtpopulation) selten der Fall
 
-Folge: 
+Idee, um ungleiche Varianzen zu berücksichtigen: 
 
 * Die Berechnung der **durchschnittlichen Varianz innerhalb** erfolgt durch die Addition der Varianzen innerhalb der einzelnen Gruppen 
 
@@ -683,7 +683,7 @@ class: top, left
 
 **Kontext der Varianzanalyse (Varianz zwischen): **
 
-* Experimenteller Einfluss auf die Gesamtvarianz wird pber die Unterschiede der Gruppenmittelwerte geschätzt
+* Experimenteller Einfluss auf die Gesamtvarianz wird über die Unterschiede der Gruppenmittelwerte geschätzt
 
 * Unterschiede zwischen Gruppenmittelwerten = **Varianz zwischen**
 
@@ -709,7 +709,7 @@ class: top, left
 
 * Freiheitsgrade ergeben sich aus der Anzahl der Gruppen
 
-* Der Zähler muss mit der Anzahl der Versuchspersonen (n) in einer GRuppe multipliziert werden, um Genauigkeit der Mittelwerte als Populationsschätzer zu berücksichtigen
+* Der Zähler muss mit der Anzahl der Versuchspersonen (n) in einer Gruppe multipliziert werden, um Genauigkeit der Mittelwerte als Populationsschätzer zu berücksichtigen
 
 $$\hat{\sigma}_{zwischen}^2=\frac{QS_{zwischen}}{df_{zwischen}}= \frac{n \cdot \sum\limits _{i=1}^{p}(\bar{A}_i-\bar{G})^2}{p-1}$$
 Wenn kein Effekt der UV vorliegt...
@@ -838,7 +838,7 @@ class: top, left
 Logik der F-Verteilung (analog zum t-Test):
 * Aus 3 Populationen werden jeweils $n$ Personen gezogen
 
-* Aus Messwerten werden Inner- und Zwischenvarianz  sowie der F-Quotient berechnet
+* Aus Messwerten werden Inner- und Zwischenvarianz sowie der F-Quotient berechnet
 
 * Vorgang wird (idealerweise unendlich oft) wiederholt
 
@@ -891,7 +891,7 @@ class: top, left
 
 * Mit anderen Worten: Es besteht ein signifikanter (systematischer) Unterschied zwischen den Gruppen
 
-* ACHTUNG: Nur statistische Signifikanz $\rightarrow$ für Relevanz auf inhaltlicher/klinischer Ebene, müssen Effektstärken berücksichtigt werden
+* ACHTUNG: Nur statistische Signifikanz $\rightarrow$ für Relevanz auf inhaltlicher/klinischer Ebene müssen Effektstärken berücksichtigt werden
 
 **VORSICHT:**
 
@@ -907,7 +907,7 @@ class: top, left
 
 #### Einfaktorielle ANOVA - Rechenbeispiel in R
 
-Unsere Stichprobe ist, für ein realisteres Szenario, auf insgesamt $N=150$ $(n=50$ pro Gruppe) erweitert worden:
+Unsere Stichprobe ist, für ein realisteres Szenario mit mehr Teststärke, auf insgesamt $N=150$ $(n=50$ pro Gruppe) erweitert worden:
 
 ```{r echo = F}
 set.seed(123)

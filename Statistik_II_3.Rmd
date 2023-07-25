@@ -127,11 +127,11 @@ class: top, left
 
 **Gerichtete Zusammenhänge**
 
-* Jetzt wollen wir einen Schritt weiter gehen und unterstellen dass der Zusammenhang eine Richtung hat
+* Jetzt wollen wir einen Schritt weiter gehen und unterstellen, dass der Zusammenhang eine Wirkrichtung hat
 
 * D.h. $X$ wirkt auf $Y$ und eben nicht $Y$ wirkt auf $X$ 
 
-* Wenn wir diese Richtung unterstellen kann man die lineare Regression anwenden
+* Wenn wir diese Richtung unterstellen, kann man die lineare Regression anwenden
 
 ---
 class: top, left
@@ -145,11 +145,11 @@ class: top, left
 
 Beispiel: 
 
-* Die Intensität des Sports wirkt sich den Puls aus aber nicht umgekehrt
+* Die Intensität des Sports wirkt sich auf den Puls aus, aber nicht umgekehrt
 
-* Wenn wir so einen gerichteten Zusammenhang untersuchen dann stellt sich die Frage wo die Richtung herkommt
+* Wenn wir so einen gerichteten Zusammenhang untersuchen, dann stellt sich die Frage, wo die Richtung herkommt
 
-$\rightarrow$ Typischerweise müssen wir die aus der Theorie oder aus Plausibilitätsüberlegungen herleiten 
+$\rightarrow$ Typischerweise müssen wir die Richtung aus der Theorie oder aus Plausibilitätsüberlegungen herleiten 
 
 ---
 class: top, left
@@ -173,7 +173,7 @@ ggplotly(scatterplot)
 ]
 .pull-right[
 
-```{r}
+```{r echo=FALSE}
 knitr::kable((sampledata[1:13,1:3]),
              booktabs = T,
              longtable = F) %>%
@@ -242,7 +242,7 @@ layout(legend = list(x = 100, y = 0.5))
 ]
 
 .pull-right[
-Im Falle der linearen Regression wird unterstellt dass diese Funktion linear, also eine Gerade ist
+* Im Falle der *linearen* Regression wird unterstellt, dass diese Funktion linear, also eine Gerade ist
 ]
 
 ---
@@ -271,7 +271,9 @@ layout(legend = list(x = 100, y = 0.5))
 ]
 
 .pull-right[
-Theoretisch wären allerdings auch andere Funktionen denkbar.
+* Theoretisch wären allerdings auch andere Funktionen denkbar.
+
+* Diese beschreiben die vorliegenden Daten ggf. besser, sind aber nicht so leicht interpretierbar/generalisierbar.
 ]
 
 ---
@@ -639,10 +641,10 @@ $$b=\frac{\sigma^2_{XY}}{\sigma^2_X} = r_{XY} \cdot \frac{\sigma_y}{\sigma_x}$$
 ]
 .pull-right[
 **To Do - wir benötigen:**
-* Mittelwert von X: $\bar{x}$ 
-* Mittelwert von Y: $\bar{y}$ 
-* Kovarianz von XY: $\sigma^2_{XY}$
-* Varianz von X: $\sigma^2_X$
+* Mittelwert von $X: \bar{x}$ 
+* Mittelwert von $Y: \bar{y}$ 
+* Kovarianz von $XY: \sigma^2_{XY}$
+* Varianz von $X: \sigma^2_X$
 
 ]
 
@@ -665,10 +667,10 @@ knitr::kable((t(sampledata[,2:3])),
 
 <br>
 <br>
-Mittelwert von X = $\bar{x}=\frac{\sum\limits _{i=1}^{n}x_{i}}{n}$  
+Mittelwert von $X = \bar{x}=\frac{\sum\limits _{i=1}^{n}x_{i}}{n}$  
 <br>
 <br>
-Mittelwert von Y = $\bar{y}=\frac{\sum\limits _{i=1}^{n}y_{i}}{n}$  
+Mittelwert von $Y = \bar{y}=\frac{\sum\limits _{i=1}^{n}y_{i}}{n}$  
 
 ]
 
@@ -676,10 +678,10 @@ Mittelwert von Y = $\bar{y}=\frac{\sum\limits _{i=1}^{n}y_{i}}{n}$
 
 <br>
 <br>
-Kovarianz von XY = $\sigma_{xy}^2=\frac{\displaystyle \sum_{i=1}^{n}(x_{i}-\bar{x})\cdot(y_{i}-\bar{y})}{n-1}^2$ 
+Kovarianz von $XY = \sigma_{xy}^2=\frac{\displaystyle \sum_{i=1}^{n}(x_{i}-\bar{x})\cdot(y_{i}-\bar{y})}{n-1}$ 
 <br>
 <br>
-Varianz von X =  $\sigma^2=\dfrac{\displaystyle\sum_{i=1}^{n}(x_{i}-\bar{x})^2}{n-1}$ 
+Varianz von $X =  \sigma^2=\dfrac{\displaystyle\sum_{i=1}^{n}(x_{i}-\bar{x})^2}{n-1}$ 
 
 ]
 
@@ -703,10 +705,10 @@ knitr::kable((t(sampledata[,2:3])),
 
 <br>
 <br>
-Mittelwert von X = $\bar{x}=\frac{\sum\limits _{i=1}^{n}x_{i}}{n}$  = `r round(mean(sampledata$X, na.rm = T),2)`
+Mittelwert von $X = \bar{x}=\frac{\sum\limits _{i=1}^{n}x_{i}}{n}$  = `r round(mean(sampledata$X, na.rm = T),2)`
 <br>
 <br>
-Mittelwert von Y = $\bar{y}=\frac{\sum\limits _{i=1}^{n}y_{i}}{n}$  =  `r round(mean(sampledata$Y, na.rm = T),2)`
+Mittelwert von $Y = \bar{y}=\frac{\sum\limits _{i=1}^{n}y_{i}}{n}$  =  `r round(mean(sampledata$Y, na.rm = T),2)`
 
 ]
 
@@ -714,10 +716,10 @@ Mittelwert von Y = $\bar{y}=\frac{\sum\limits _{i=1}^{n}y_{i}}{n}$  =  `r round(
 
 <br>
 <br>
-Kovarianz von XY = $\sigma_{xy}^2=\frac{\displaystyle \sum_{i=1}^{n}(x_{i}-\bar{x})\cdot(y_{i}-\bar{y})}{n-1}^2$ = `r round(cov(sampledata$X, sampledata$Y), 2)`
+Kovarianz von $XY = \sigma_{xy}^2=\frac{\displaystyle \sum_{i=1}^{n}(x_{i}-\bar{x})\cdot(y_{i}-\bar{y})}{n-1}$ = `r round(cov(sampledata$X, sampledata$Y), 2)`
 <br>
 <br>
-Varianz von X =  $\sigma^2=\dfrac{\displaystyle\sum_{i=1}^{n}(x_{i}-\bar{x})^2}{n-1}$ =  `r round(var(sampledata$X, na.rm = T),2)`
+Varianz von $X =  \sigma^2=\dfrac{\displaystyle\sum_{i=1}^{n}(x_{i}-\bar{x})^2}{n-1}$ =  `r round(var(sampledata$X, na.rm = T),2)`
 
 ]
 
@@ -789,7 +791,7 @@ $$ \hat{y}=`r round(mean(sampledata$Y, na.rm = T) - cov(sampledata$X, sampledata
 
 **Nochmal zurück zu unserer Interpretation:**
   
-- a ist also der Wert wo $X=0$ ist, also hat jemand mit 0 auf der UV einen AV Wert von 29 hat
+- a ist also der Wert wo $X=0$ ist. Also hat jemand mit 0 auf der UV einen AV Wert von 29.
 
 - Wenn wir nun um 1 Einheit $X$ nach rechts gehen (in welcher Einheit die UV auch immmer gemessen wird), nimmt $\hat{y}$ um b zu.
 ]
@@ -1086,7 +1088,7 @@ class: top, left
 
 * **Regressionsgerade** = graphische Veranschaulichung der Regressionsgleichung
 
-* Regressionsgleichung ist ddefiniert durch die **Regressionskoeffizienten** (Y-Achsenabschnitt und Steigung), welche aus Daten geschätzt werden müssen.
+* Regressionsgleichung ist definiert durch die **Regressionskoeffizienten** (Y-Achsenabschnitt und Steigung), welche aus Daten geschätzt werden müssen.
 
 * **Y-Achsenabschnitt** ist der Startwert (wenn X = 0) und **Steigung** ist die Veränderung in der AV bei Zunahme der UV um 1 Einheit.
 

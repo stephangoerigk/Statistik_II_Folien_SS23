@@ -67,7 +67,7 @@ class: top, left
 
 * Für den t-Test gelernte Konzepte können vollständig auf die Varianzanalyse übertragen werden
 
-* t-Test = Vergleich 2er Mittelwerte `\(\rightarrow\)` entsprich ANOVA mit 2-stufigem Faktor (UV)
+* t-Test = Vergleich 2er Mittelwerte `\(\rightarrow\)` entspricht ANOVA mit 2-stufigem Faktor (UV)
 
 **Beispiel aus Einheit 1 (2 Stufen):** 
 
@@ -97,7 +97,7 @@ t.test(Symptome ~ Gruppe, data = df[df$Gruppe == "Placebo" | df$Gruppe == "Medik
 ## 	Two Sample t-test
 ## 
 ## data:  Symptome by Gruppe
-## t = 6.0718, df = 98, p-value = 2.403e-08
+## t = 6.0718, df = 98, p-value = 0.00000002403
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
 ##  2.994253 5.901785
@@ -123,9 +123,9 @@ anova(lm(Symptome ~ Gruppe, data = df[df$Gruppe == "Placebo" | df$Gruppe == "Med
 ## Analysis of Variance Table
 ## 
 ## Response: Symptome
-##           Df  Sum Sq Mean Sq F value    Pr(&gt;F)    
-## Gruppe     1  494.62  494.62  36.867 2.403e-08 ***
-## Residuals 98 1314.82   13.42                      
+##           Df  Sum Sq Mean Sq F value        Pr(&gt;F)    
+## Gruppe     1  494.62  494.62  36.867 0.00000002403 ***
+## Residuals 98 1314.82   13.42                          
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
@@ -189,9 +189,9 @@ anova(lm(Symptome ~ Gruppe, data = df))
 ## Analysis of Variance Table
 ## 
 ## Response: Symptome
-##            Df Sum Sq Mean Sq F value    Pr(&gt;F)    
-## Gruppe      2  582.4 291.201  20.558 1.341e-08 ***
-## Residuals 147 2082.2  14.165                      
+##            Df Sum Sq Mean Sq F value        Pr(&gt;F)    
+## Gruppe      2  582.4 291.201  20.558 0.00000001341 ***
+## Residuals 147 2082.2  14.165                          
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
@@ -280,7 +280,7 @@ class: top, left
 
 * Oftmals liefert `\(\omega^2\)` genauere Schätzung (Daten innerhalb der Stichprobe sind überangepasst)
 
-* Der Stichprobenebene klärt der Faktor Gruppe ca. 22% der Varianz der Messwerte auf
+* Auf der Stichprobenebene klärt der Faktor Gruppe ca. 22% der Varianz der Messwerte auf
 
 * Konventionen für `\(\eta^2\)` entsprechen denen für `\(\Omega^2\)`
 
@@ -292,7 +292,7 @@ class: top, left
 
 ##### Residualvarianz
 
-* Je kleiner die Residualvarianz, desto größer die Test stärke (Wahrscheinlichkeit, dass Test signifikant wird)
+* Je kleiner die Residualvarianz, desto größer die Teststärke (Wahrscheinlichkeit, dass Test signifikant wird)
 
 * Schätzung der Residualvarianz durch die Varianz innerhalb steht im Nenner des F-Bruchs `\(\rightarrow\)` bei kleineren Werten wird F-Wert größer
 
@@ -375,9 +375,9 @@ class: top, left
 
 Probleme bei Auslassen der Stichprobenumfangsplanung:
 
-* Stichprobenumfang zu klein. Teststärke ist so klein, dass ein nicht signifikantesergebnis nicht interpretierbar ist (underpowered)
+* Stichprobenumfang zu klein. Teststärke ist so klein, dass ein nicht signifikantes Ergebnis nicht interpretierbar ist **(underpowered)**
 
-* Stichprobenumfang zu groß. Auch kleine Effekte werden signifikant, die für eine vernünftige inhaltliche Interpretation zu klein sind (overpowered)
+* Stichprobenumfang zu groß. Auch kleine Effekte werden signifikant, die für eine vernünftige inhaltliche Interpretation zu klein sind **(overpowered)**
 
 ---
 class: top, left
@@ -405,7 +405,7 @@ pwr::pwr.anova.test(k=3, f= 0.2, sig.level = 0.05, power = 0.9)
 ## NOTE: n is number in each group
 ```
 
-* Bei Annahme eines Signifikanzniveaus von 0.05 wären für eine ANOVA mit 3 Gruppen und einer großen Effektstärke (0.20) wären für eine Teststärke `\((1-\beta)\)` von 90% lediglich N=106 Personen zum Nachweisen eines signifikanten Effekts notwendig gewesen.
+* Bei Annahme eines Signifikanzniveaus von `\(\alpha=0.05\)` wären für eine ANOVA mit 3 Gruppen und einer großen Effektstärke (0.20) wären für eine Teststärke `\((1-\beta)\)` von 90% lediglich N=106 Personen zum Nachweisen eines signifikanten Effekts notwendig gewesen.
 
 ---
 class: top, left
@@ -433,7 +433,7 @@ class: top, left
   * `\(H_1\)` macht keine Aussage darüber, welche der Gruppen sich voneinander unterscheiden
   * `\(H_1\)` umfasst alle Möglichkeiten, welche nicht der `\(H_0\)` entsprechen
   
-* Signifikante ANOVA: Es ist lediglich gesichter, dass Gruppe mit kleinstem Mittelwert sich signifikant von Gruppe mit größtem Mittelwert unterscheidet.
+* Signifikante ANOVA: Es ist lediglich gesichtert, dass Gruppe mit kleinstem Mittelwert sich signifikant von Gruppe mit größtem Mittelwert unterscheidet.
 
 * ABER: Global formulierte `\(H_1\)` erlaubt viele Kombinationen (bei 3 Gruppen bereits 18 Möglichkeiten)
 
@@ -471,13 +471,13 @@ class: top, left
 
 * Tukey HSD Test ermöglicht paarweisen Mittelwertsvergleich ohne `\(\alpha\)`-Fehlerkumulierung und Verringerung der Teststärke
 
-* Wie groß muss die Differenz zwischen zwei Gruppenmittelwerten sein, damit diese auf einem kumulierten `\(\alpha\)`-Niveau signifikant ist, dass nicht die zuvor festgelegte Grenze überschreitet (i.d.R. 0.05)?
+* Wie groß muss die Differenz zwischen zwei Gruppenmittelwerten sein, damit diese auf einem kumulierten `\(\alpha\)`-Niveau signifikant ist, das nicht die zuvor festgelegte Grenze überschreitet (i.d.R. 0.05)?
 
 * Die Teststärke des Tukey HSD Tests ist mindestens so hoch wie die des getesteten Haupteffekts der ANOVA.
 
 * HSD = "Honest significant difference"
 
-`\(\rightarrow\)` Ist die tatsächliche Differenz zwischen den Gruppen größer, als der kritische Wert des Tukey HSD Tests, besteht ein signifikanter Unterschied
+`\(\rightarrow\)` Ist die tatsächliche Differenz zwischen den Gruppen größer als der kritische Wert des Tukey HSD Tests besteht ein signifikanter Unterschied
 
   
 ---
@@ -1053,7 +1053,7 @@ In unserem Beispiel:
 
 * Fehlerfreiheitsgrade: `\(df_{innerhalb}=147\)`
 
-`\(\rightarrow\)` In der Tabelle der `\(q_{krit}\)`-Werte verwenden wir die nächst kleinereenthaltene Anzahl an Fehlerfreiheitsgraden `\(df_{innerhalb}=120\)`
+`\(\rightarrow\)` In der Tabelle der `\(q_{krit}\)`-Werte verwenden wir die nächst kleinere enthaltene Anzahl an Fehlerfreiheitsgraden `\(df_{innerhalb}=120\)`
 
 `$$q_{krit(\alpha=.05;r=3;df_{innerhalb}=120)}=3.36$$`
 
@@ -1251,7 +1251,7 @@ class: top, left
 Es gelten folgende Voraussetzungen:
 
 1. Die abhängige Variable ist intervallskaliert
-  * messtheoretisch abgesichert (muss man wissen)
+  * messtheoretisch abgesichert (muss man durch Kenntnis des Messinstruments wissen)
 
 2. Das untersuchte Merkmal ist in der Population normalverteilt
 
@@ -1317,7 +1317,7 @@ by(df$Symptome, df$Gruppe, shapiro.test)
 ## data:  dd[x, ]
 ## W = 0.99073, p-value = 0.9618
 ## 
-## ----------------------------------------------------------------- 
+## ------------------------------------------------------------------------------------------------------------------------ 
 ## df$Gruppe: Medikament.2
 ## 
 ## 	Shapiro-Wilk normality test
@@ -1325,7 +1325,7 @@ by(df$Symptome, df$Gruppe, shapiro.test)
 ## data:  dd[x, ]
 ## W = 0.97211, p-value = 0.2814
 ## 
-## ----------------------------------------------------------------- 
+## ------------------------------------------------------------------------------------------------------------------------ 
 ## df$Gruppe: Placebo
 ## 
 ## 	Shapiro-Wilk normality test
@@ -1346,7 +1346,7 @@ class: top, left
 
 * Für eine gut geplante ANOVA ist eine **Stichprobenumfangsplanung** (Poweranalyse) notwendig.
 
-* Ein **signifikantes Ergebnis** der ANOVA bedeutet lediglich, dass sich zumindest eine Stude des Faktors von einer anderen unterscheidet.
+* Ein **signifikantes Ergebnis** der ANOVA bedeutet lediglich, dass sich zumindest eine Stufe des Faktors von einer anderen unterscheidet.
 
 * **Post-Hoc-Analysen** werden zur Untersuchung genutzt, wo genau die Mittelwertsunterschiede liegen.
 
