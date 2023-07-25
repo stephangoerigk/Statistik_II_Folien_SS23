@@ -243,7 +243,7 @@ class: top, left
 .pull-left[
 #### Dichotom nominalskalierte Prädiktoren (UVs)
 
-* Oft nutzen Psychologen die einfache lineare Regression, um eine intervallskalierte AV $(Y)$ mit einer intervallskalierten UV $(X)$ vorherzusagen
+* Oft nutzen Psycholog:innen die einfache lineare Regression, um eine intervallskalierte AV $(Y)$ mit einer intervallskalierten UV $(X)$ vorherzusagen
 
 * Es kann jedoch auch eine dichotom nominalskalierte Variable als UV verwendet werden 
 
@@ -415,11 +415,11 @@ class: top, left
 
 * Wie der Name bereits sagt, eignet sich die einfache lineare Regression in erster Linie für lineare Zusammenhänge.
 
-* Ihre Anwendung ist also prinzipiell nur Modellierung solcher Zusammenhänge angemessen.
+* Ihre Anwendung ist also prinzipiell nur zur Modellierung solcher Zusammenhänge angemessen.
 
 Beispiele für bivariate (zwischen 2 Variablen) non-lineare Zusammenhänge:
 
-  * Eponentieller Zusammenhang
+  * Exponentieller Zusammenhang
   
   * Quadratisches Polynom (parabolischer Zusammenhang)
   
@@ -648,7 +648,7 @@ class: top, left
 
 * Zur Beurteilung, ob $X$ (UV) $Y$ (AV) statistisch bedeutsam vorhersagt, rechnen wir einen Signifikanztest, der wie der t-Test funktioniert (Wald-Test)
 
-* Prüfgröße ist t-verteilt mit $df=N-2$ Freiiheitsgraden
+* Prüfgröße ist t-verteilt mit $df=N-2$ Freiheitsgraden
 
 * Sie wird gebildet, indem der unstandardisierte Regressionskoeffizient $b$ durch seinen Standardfehler geteilt wird (an diesem relativiert wird)
 
@@ -900,7 +900,7 @@ class: top, left
 
 **Konfidenzintervall (KI) für den Steigungsparameter**
 
-.center[
+.left[
 ```{r eval = TRUE, echo = F, out.width = "950px"}
 knitr::include_graphics("bilder/f2.png")
 ```
@@ -1192,7 +1192,7 @@ class: top, left
 
 #### Voraussetzungen der einfachen linearen Regression
 
-1. Das Kriterium (AV) muss intervallskaliert und nnormalverteilt sein.
+1. Das Kriterium (AV) muss intervallskaliert und normalverteilt sein.
 
 2. Der Prädiktor (UV) kann entweder intervallskaliert und normalverteilt oder dichotom nominalskaliert sein.
 
@@ -1286,7 +1286,7 @@ class: top, left
 ### Take-aways
 
 .full-width[.content-box-gray[
-* Der Mittelwert der vorhergesagten Werten entspricht dem Mittelwert der empirischen Verteilung.
+* Der Mittelwert der vorhergesagten Werte entspricht dem Mittelwert der empirischen Verteilung.
 
 * Nominalskalierte UVs können in der Regression mittels Dummy-Kodierung verwendet werden.
 
