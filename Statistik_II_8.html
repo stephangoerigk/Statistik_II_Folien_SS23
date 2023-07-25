@@ -101,7 +101,7 @@ class: top, left
 
 **Zerlegung der Gesamtvarianz:**
 
-Wir müsse uns wiederum fragen, weshalb Messungen unterschiedlich (mit Varianz) ausfallen
+Wir müssen uns wiederum fragen, weshalb Messungen unterschiedlich (mit Varianz) ausfallen
 
 Nach wie vor gibt es 2 denkbare Ursachen für die Gesamtvarianz:
 1. systematische Einflüsse (experimentelle Manipulation)
@@ -112,7 +112,7 @@ Spezialfall Messwiederholung:
 * Aufgrund der wiederholten Messungen beziehen sich beide Varianzquellen auf Unterschiede **innerhalb der Personen**
 * Zusätzliche Varianzquelle: Unterschiede **zwischen den Personen** (Personenvarianz `\(\sigma^2_{Vpn}\)` - z.B. Persönlichkeit, Motivation)
 
-`$$\sigma_{gesamt}^2= \sigma_{Vpn}^2 + \sigma_{Effekt}^2 +  \hat{\sigma}_{Res}^2$$`  
+`$$\sigma_{gesamt}^2= \sigma_{Vpn}^2 + \sigma_{Zeit}^2 +  \sigma_{Res}^2$$`  
 
 ---
 class: top, left
@@ -236,7 +236,7 @@ class: top, left
 
 **Varianzschätzungen:**
 
-* Die Varianzschätzungen der ANOVA mit Messwiederholung gehen von eine Interaktion der Messwiederholung mit unspezifischen Personencharakteristika aus
+* Die Varianzschätzungen der ANOVA mit Messwiederholung gehen von einer Interaktion der Messwiederholung mit unspezifischen Personencharakteristika aus
 
 * Die Formeln ähneln daher eher denen der mehrfaktoriellen ANOVA mit Interaktionseffekt
 
@@ -251,9 +251,8 @@ class: top, left
 **Schätzung der Residualvarianz:**
 
 * Erfolgt über die Abweichung der gemessenen Werte von den, allein auf Grund von
-  1. der Mittelwerte zu jedem Zeitpunkt
-  2. der Personenmittelwerte
-  zu **erwartenden** Werten `\((x_{im(erwartet)})\)`
+  1. den Mittelwerten zu jedem Zeitpunkt
+  2. den aufgrund der Personenmittelwerte zu **erwartenden** Werten `\((x_{im(erwartet)})\)`
 
 * Entspricht Vorgehen für Varianz der Interaktion zwischen 2 Faktoren
 
@@ -277,7 +276,7 @@ class: top, left
 
 * Die geschätzte Residualvarianz `\((\hat{\sigma}^2_{Res})\)` berechnet sich aus den quadrierten Abweichungen `\((QS_{A\text{ x }Vpn})\)` der beobachteten von den erwarteten Messwerten 
 
-* Sie wird somit aus de Varianz der Wechselwirkung zwischen Messwiederholungsfaktor und Personenfaktor geschätzt
+* Sie wird somit aus der Varianz der Wechselwirkung zwischen Messwiederholungsfaktor und Personenfaktor geschätzt
 
 `$$\hat{\sigma}^2_{A\text{ x }Vpn} = \frac{QS_{A\text{ x }Vpn}}{df_{A\text{ x }Vpn}} = \frac{\sum\limits _{i=1}^{p}\sum\limits _{m=1}^{N} [x_{im} - (\bar{A_{i}} + \bar{P_{m}}- \bar{G})]^2}{(p-1) \cdot (n-1)}$$`
 mit:
@@ -343,7 +342,7 @@ class: top, left
 
 Berechnung der systematischen Varianz im Beispiel:
 
-`$$\hat{\sigma}^2_{A} = \frac{5 \cdot (10.4 - 15.6)^2 + (16.6 - 15.6)^2 + (19.8 - 15.6)^2}{3-1} = \frac{228.4}{2}= 114.2$$`
+`$$\hat{\sigma}^2_{A} = \frac{5 \cdot [(10.4 - 15.6)^2 + (16.6 - 15.6)^2 + (19.8 - 15.6)^2]}{3-1} = \frac{228.4}{2}= 114.2$$`
 mit
 * `\(df_A=3-1=2\)`
 
@@ -355,9 +354,9 @@ class: top, left
 
 **Signifikanzprüfung:**
 
-* Püfung of sich die Messzeitpunkte signifikant unterscheiden
+* Püfung, ob sich die Messzeitpunkte signifikant unterscheiden
 
-* F-Bruch (emp. F-Wert) wird gebildet aus geschätzter systematische Varianz für Messwiederholungsfaktor (A) und der geschätzten Residualvarianz 
+* F-Bruch (emp. F-Wert) wird gebildet aus geschätzter systematischer Varianz für Messwiederholungsfaktor (A) und der geschätzten Residualvarianz 
 
 `$$F_{A(df_{A}, df_{Res})}=\frac{\hat{\sigma}^2_{A}}{\hat{\sigma}^2_{Res}} = \frac{\hat{\sigma}^2_{A}}{\hat{\sigma}^2_{A\text{ x }Vpn}}$$`
 
@@ -667,7 +666,7 @@ Long-Format (aus Platzgründen nur für Personen 1-5 dargestellt):
 Wichtig:
 
 * Jede Zeile muss mittels einer ID Variable eindeutig den Personen zugeordnet werden
-* Eine weitere Variable (bei Messwiederholungen z.B. Zeit) muss angeben, weshalb es mehrere Werte pro Fall gibt
+* Eine weitere Variable (bei Messwiederholungen z.B. Zeit) muss angegeben werden, weshalb es mehrere Werte pro Fall gibt
 ]
 
 .pull-right[
@@ -1098,7 +1097,7 @@ class: top, left
 `$$\eta^2_p=\frac{QS_{A}}{QS_{A} + QS_{A\text{ x }Vpn}}=\frac{f^2_{s}}{1+ f^2_{s}}$$`
 * `\(\eta^2_p\)` gibt Anteil der Varianz an, der durch Messwiederholung auf Stichprobenebene aufgeklärt wird
 
-* Der Vergleich von Effektstärke pber Studien hinweg kann problematisch sein, wenn Korrelationen zwischen Messungen variieren.
+* Der Vergleich von Effektstärke über Studien hinweg kann problematisch sein, wenn Korrelationen zwischen Messungen variieren.
 
 ---
 class: top, left
@@ -1127,7 +1126,7 @@ class: top, left
 
 * Bei Verletzungen der Spärizitätsannahme können **Korrekturverfahren** angewendet werden, die Überschätzung des Effekts verhindern.
 
-* Wenn Spärizität erfüllt ist, können Post-Hic Vergleiche mittels **Tukey-Test** geprüft werden.
+* Wenn Spärizität erfüllt ist, können Post-Hoc Vergleiche mittels **Tukey-Test** geprüft werden.
 ]
 ]
 
