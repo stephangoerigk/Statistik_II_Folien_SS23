@@ -77,7 +77,7 @@ class: top, left
 
 * multiple Regression: das Regressionsmodell enthält mehr als eine UV (Prädiktor)
 
-* Ziel: Durch Hinzunahme weitere Prädiktoren Vorhersagen bezogen auf die AV zu verbessern
+* Ziel: Durch Hinzunahme weiterer Prädiktoren Vorhersagen bezogen auf die AV zu verbessern
 
 **Abgrenzung zur mehrfaktoriellen ANOVA:**
 
@@ -679,7 +679,7 @@ class: top, left
 
 * Wir probieren dies in unserem Beispiel, indem wir zu unserem Modell den Prädiktor "Ausgrenzungserfahrung" hinzunehmen
 
-  * **Szenario 1:** Ausgrenzungserfahrung ist kein relevanter Prädiktor $/rightarrow$ Modell ohne Ausgrenzungserfahrung passt erklärt Daten zumindest gleich gut
+  * **Szenario 1:** Ausgrenzungserfahrung ist kein relevanter Prädiktor - Modell ohne Ausgrenzungserfahrung erklärt Daten zumindest gleich gut
   * **Szenario 2:** Modell mit Ausgrenzungserfahrung hat signifikant bessere Modellpassung (kann AV besser vorhersagen)
 
 ---
@@ -779,7 +779,7 @@ class: top, left
 
 #### Modellpassung
 
-* Auch für die multiple Regression lässt sich die Güte des Modells über $R^2$ schötzen
+* Auch für die multiple Regression lässt sich die Güte des Modells über $R^2$ schätzen
 
 * Zur Erinnerung: 
   * Verhältnis aufgeklärter zu gesamter Streuung
@@ -895,7 +895,7 @@ class: top, left
 .pull-left[
 #### Vorhersagewerte - Anwendung des Modells
 
-* Je besser da Modell passt, desto stärker der Zusammenhang zwischen beobachteten und vorhergesagten Werten:
+* Je besser das Modell passt, desto stärker der Zusammenhang zwischen beobachteten und vorhergesagten Werten:
 ]
 
 .pull-right[
@@ -905,12 +905,14 @@ cowplot::plot_grid(
   ggplot(df, aes(x = Aggression, y = pred_model1)) +
     geom_point() +
     geom_smooth(method = "lm") +
+    labs(y = "Vorhergesagte Aggr.") +
     theme_classic() +
     theme(text = element_text(size = 20)),
   ggplot(df, aes(x = Aggression, y = pred_model2)) +
     geom_point() +
     geom_smooth(method = "lm") +
     theme_classic() +
+    labs(y = "Vorhergesagte Aggr.") +
     theme(text = element_text(size = 20)), nrow = 2
 )
 ```
@@ -924,13 +926,13 @@ class: top, left
 
 **Wie bei einfacher Regression:**
 
-1) Das Kriterium (AV) muss intervallskaliert und nnormalverteilt sein.
+1) Das Kriterium (AV) muss intervallskaliert und normalverteilt sein.
 
 2) Die Prädiktoren (UV) können entweder intervallskaliert und normalverteilt oder dichotom nominalskaliert sein.
 
 3) Die Werte der einzelnen Versuchspersonen müssen unabhängig voneinander sein
 
-4) Die Zusammenhänge muss theroretisch linear sein (sonst andere Regressionsmodelle nutzen).
+4) Die Zusammenhänge müssen theroretisch linear sein (sonst andere Regressionsmodelle nutzen).
 
 5) Streuungen der Wertepaare müssen über ganzen Wertebereich von $X$ und $Z$ homogen sein (Homoskedastizität).
 

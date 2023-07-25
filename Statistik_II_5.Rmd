@@ -98,7 +98,7 @@ class: top, left
 
 * Verhalten wird (fast) immer von mehr als einem Faktor bestimmt
 
-* Deshalb interesiert oft die Wirkung von nicht einem, sondern mehreren Faktoren auf die AV
+* Deshalb interessiert oft die Wirkung von nicht einem, sondern mehreren Faktoren auf die AV
 
 * Von besonderem Interesse: Zusammenwirken der Faktoren (Wechselwirkung, Interaktion)
 ]
@@ -204,7 +204,7 @@ class: top, left
 
 * Interaktion erfasst das Zusammenwirken der Faktorstufen beider Faktoren
 
-* Sie quantifiziert Einflüsse, die nur durch die gemeinsame, simultane Wirkung zweiter Faktorstufen entstehen $\rightarrow$ nicht durch die Haupteffekte alleine
+* Sie quantifiziert Einflüsse, die nur durch die gemeinsame, simultane Wirkung zweier Faktorstufen entstehen $\rightarrow$ nicht durch die Haupteffekte alleine
 
 Formell:
 
@@ -974,7 +974,7 @@ class: top, left
 
 * Interaktion beschreibt Variabilität der Zellmittelwerte, die nicht durch die 2 Haupteffekte erklärt werden kann
 
-* Formell: Interaktion betrachtet Abweichungen, der beobachteten Zellmittelwerte von den aufgrund der Haupteffekte zu erwartenden Tellmittelwerte
+* Formell: Interaktion betrachtet Abweichungen, der beobachteten Zellmittelwerte von den aufgrund der Haupteffekte zu erwartenden Zellmittelwerte
 
 Frage: Welche Werte sind aufgrund der Haupteffekte zu erwarten?
 
@@ -1252,7 +1252,7 @@ class: top, left
 ### Take-aways
 
 .full-width[.content-box-gray[
-* In der Mehrfaktorielle ANOVA können Haupteffekte und Interaktionseffekte geprüft werden.
+* Mit der mehrfaktoriellen ANOVA können Haupteffekte und Interaktionseffekte geprüft werden.
 
 * Haupteffekte beschreiben Einfluss einer UV, ungeachtet des Einflusses der anderen UVs.
 
@@ -1262,7 +1262,7 @@ class: top, left
 
 * Der Hypothesentest der Interaktion nimmt an, dass die beobachteten von den erwarteten Zellmittelwerten abweichen.
 
-* Als EFfektstärken bieten sich die partiellen Maße von $\omega^2$ und $\eta^2:$ $\omega^2_p$ und $\eta^2_p$.
+* Als Effektstärken bieten sich die partiellen Maße von $\omega^2$ und $\eta^2:$ $\omega^2_p$ und $\eta^2_p$ an.
 ]
 
 ]

@@ -469,7 +469,7 @@ knitr::include_graphics("bilder/Moderation.png")
 * UV: Konfrontationsbereitschaft
 * Moderator: Erfahrung
 
-**Moderation:** *Beeinflusst die Erfahrung den Effekt der Konfrontationsbereitschaft auf den Therapieerfolg?* (Beispielserklärunng: Erfahrenere Therapeut:innen besser konfrontieren.) 
+**Moderation:** *Beeinflusst die Erfahrung den Effekt der Konfrontationsbereitschaft auf den Therapieerfolg?* (Beispielserklärung: Erfahrenere Therapeut:innen können besser konfrontieren.) 
 ]
 
 ---
@@ -626,7 +626,7 @@ summary(model)
 .pull-right[
 **Anmerkung:**
 <small>
-* Output des Regressionsmodell enthält lediglich einen Signifikanztest für die Steigung der Referenzkategorie $(\beta_{Konfrontativ|Erfahrung=0}=-0.44, t_{48}=-4.14, p<.001)$
+* Output des Regressionsmodells enthält lediglich einen Signifikanztest für die Steigung der Referenzkategorie $(\beta_{Konfrontativ|Erfahrung=0}=-0.44, t_{48}=-4.14, p<.001)$
 
 * Steigung der anderen Gruppe lässt sich "per Hand" ausrechnen $(\beta_{Konfrontativ|Erfahrung=1} =$ `r round(as.data.frame(summary(model)$coefficients)[3,1], 2)` + `r round(as.data.frame(summary(model)$coefficients)[4,1], 2)` = `r round(as.data.frame(summary(model)$coefficients)[3,1], 2) +  round(as.data.frame(summary(model)$coefficients)[4,1], 2)`
 
@@ -743,7 +743,7 @@ knitr::include_graphics("bilder/Moderation.png")
 * UV: Empathiefähigkeit
 * Moderator: Erfahrung
 
-**Moderation:** *Beeinflusst die Erfahrung den Effekt der Empathiefähigkeit auf den Therapieerfolg?* (Beispielserklärunng: Erfahrenere Therapeut:innen können Empathie besser ausdrücken.) 
+**Moderation:** *Beeinflusst die Erfahrung den Effekt der Empathiefähigkeit auf den Therapieerfolg?* (Beispielserklärung: Erfahrenere Therapeut:innen können Empathie besser ausdrücken.) 
 ]
 
 ---
@@ -757,7 +757,7 @@ class: top, left
 .pull-left[
 .code60[
 ```{r}
-model = lm(Therapieerfolg ~ Erfahrung * Konfrontativ, data = df)
+model = lm(Therapieerfolg ~ Erfahrung * Empathie, data = df)
 summary(model)
 ```
 ]
@@ -889,7 +889,7 @@ knitr::include_graphics("bilder/Moderation.png")
 * UV: IQ
 * Moderator: Erfahrung
 
-**Moderation:** *Beeinflusst die Erfahrung den Effekt der Empathiefähigkeit auf den Therapieerfolg?* (Beispielserklärunng: Erfahrenere Therapeut:innen können Intelligenz besser einsetzen / geringe Intelligenz kompensieren.) 
+**Moderation:** *Beeinflusst die Erfahrung den Effekt der Empathiefähigkeit auf den Therapieerfolg?* (Beispielserklärung: Erfahrenere Therapeut:innen können Intelligenz besser einsetzen / geringe Intelligenz kompensieren.) 
 ]
 
 ---
@@ -1092,7 +1092,7 @@ df$IQ = round(faux::rnorm_pre(df$Therapieerfolg, mu = 100, sd = 15, r = 0.2))
 
 .pull-left[
 
-**Diskrete Prädiktoren mit $\geq 2$ Stufen:**
+**Diskrete Prädiktoren mit $> 2$ Stufen:**
 
 Nehmen wir einmal an, Erfahrung der Therapeut:innen würde 3-stufig definiert:
 
@@ -1118,7 +1118,7 @@ class: top, left
 
 #### Beispiel: Faktoren für Erfolg einer Therapie
 
-**Diskrete Prädiktoren mit $\geq 2$ Stufen:**
+**Diskrete Prädiktoren mit $> 2$ Stufen:**
 
 Dummy-Kodierung: Zerlegung der 3-stufigen in zwei 2-stufige Dummy Variablen:
 
@@ -1145,7 +1145,7 @@ class: top, left
 
 #### Beispiel: Faktoren für Erfolg einer Therapie
 
-**Diskrete Prädiktoren mit $\geq 2$ Stufen:**
+**Diskrete Prädiktoren mit $> 2$ Stufen:**
 
 .pull-left[
 
@@ -1175,7 +1175,7 @@ class: top, left
 
 #### Beispiel: Faktoren für Erfolg einer Therapie
 
-**Diskrete Prädiktoren mit $\geq 2$ Stufen:**
+**Diskrete Prädiktoren mit $>2$ Stufen:**
 
 .pull-left[
 .code60[
@@ -1201,7 +1201,7 @@ class: top, left
 
 #### Beispiel: Faktoren für Erfolg einer Therapie
 
-**Diskrete Prädiktoren mit $\geq 2$ Stufen:**
+**Diskrete Prädiktoren mit $> 2$ Stufen:**
 
 .pull-left[
 
@@ -1226,7 +1226,7 @@ class: top, left
 
 #### Beispiel: Faktoren für Erfolg einer Therapie
 
-**Diskrete Prädiktoren mit $\geq 2$ Stufen:**
+**Diskrete Prädiktoren mit $> 2$ Stufen:**
 
 .pull-left[
 
@@ -1258,7 +1258,7 @@ class: top, left
 
 * Bei stetigen Prädiktoren ohne sinnhaften Nullpunkt sollte eine **Zentrierung** durchgeführt werden.
 
-* Bei $\geq2$-stufigen diskreten Prädiktoren sollten **Omnibustests** verwendet werden, um Typ-I Fehler zu vermeiden.
+* Bei $>2$-stufigen diskreten Prädiktoren sollten **Omnibustests** verwendet werden, um Typ-I Fehler zu vermeiden.
 
 * Paarweise Vergleiche von Steigungen innerhalb der Stufen eines Faktors lassen sich mit **Post-Hoc Trend Vergleichen** rechnen.
 ]
