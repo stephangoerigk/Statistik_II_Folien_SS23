@@ -150,7 +150,7 @@ class: top, left
 #### Logistische Regression
 <small>
 
-Wir beginnen mit einem bivariaten Modell $(AV$ und $UV_1:$)
+Wir beginnen mit einem bivariaten Modell $(AV$ und $UV_1):$
 
 * $AV:$ Erfolg einer Gesprächstherapie (dummy-codiert)
 
