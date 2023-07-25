@@ -307,7 +307,7 @@ Wir werden 2 Arten von Tests kennenlernen:
   * Aussagen über ein mehr oder weniger einer bestimmten Eigenschaft
   * Ziel: Analyse der Häufigkeitsverteilung
   * Logik: Hypothesentest ähnlich t-Tests und ANOVAs
-  * $H_1:$ "Es gibt Unterschieder in der **Verteilung** der Kategorien."
+  * $H_1:$ "Es gibt Unterschiede in der **Verteilung** der Kategorien."
 
 **2. Logistische Regression (nächste Einheit)**
   * Regression mit kategorialer AV
@@ -321,7 +321,7 @@ class: top, left
 
 #### $\chi^2$-Tests
 
-* Relative Häufigkeit in Stichprobe dient als SChätzer für Auftretenswahrscheinlichkeit in Population
+* Relative Häufigkeit in Stichprobe dient als Schätzer für Auftretenswahrscheinlichkeit in Population
 
 Logik ähnlich wie t-Test $(H_0$ des t-Tests: Mittelwerte sind gleich)
 
@@ -525,7 +525,7 @@ class: top, left
 
   * Informationen über Richtung der Abweichung geht verloren
   
-  * unspezifischer Test $\rightarrow$ es können keine gerichteten Hypothesen getestet werde
+  * unspezifischer Test $\rightarrow$ es können keine gerichteten Hypothesen getestet werden
   
   * Ausnahme: eindimensionaler $\chi^2$-Test mit 2 Stufen
 
@@ -808,11 +808,11 @@ class: top, left
 
 **Berechnung erwarteter Häufigkeiten unter Annahme der $H_0:$**
 
-* Zur Berechnung müssen wir wissen, wie sich hedes Merkmal alleine verteilen würde (Ignorieren des anderen Merkmals)
+* Zur Berechnung müssen wir wissen, wie sich jedes Merkmal alleine verteilen würde (Ignorieren des anderen Merkmals)
 
 * Dies schätzen wir über die sogenannten **Randhäufigkeiten**
 
-* relative Randhäufigkeiten (in %) dienen als Schötzer für die Wahrscheinlichkeit einer Merkmalsstufe in der Population $(p_i$ bzw. $p_j)$
+* relative Randhäufigkeiten (in %) dienen als Schätzer für die Wahrscheinlichkeit einer Merkmalsstufe in der Population $(p_i$ bzw. $p_j)$
 
 $$p_i = \frac{n_i}{N}, \text{ bzw. } p_j = \frac{n_j}{N}$$
 ---
