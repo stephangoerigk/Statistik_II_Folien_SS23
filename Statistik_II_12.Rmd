@@ -109,9 +109,9 @@ ABER:
 
   * Ordinalskalenniveau
   
-  * zufällige Zuordnung von Versuchspersonen zu gucken
+  * zufällige Zuordnung von Versuchspersonen
 
-* Daher: Falls möglich werden parametrische Verfahren bevorzugt (beziehn mehr Informationen ein)
+* Daher: Falls möglich werden parametrische Verfahren bevorzugt (beziehen mehr Informationen ein)
 
 ---
 class: top, left
@@ -121,7 +121,7 @@ class: top, left
 
 **Logik nonparametrischer Tests:**
 
-* Nonparametrischer Tests setzen in der Regel Ordinalskalenniveau voraus
+* Nonparametrische Tests setzen in der Regel Ordinalskalenniveau voraus
 
   * Arbeiten mit der Betrachtung von Rangplätzen
   
@@ -172,7 +172,7 @@ class: top, left
 
   * kein Intervallskalenniveau der $AV$
   
-  * Merkmal ist in der Population nicht normal verteilt (Test der NV auf Basis der Stichprobendaten)
+  * Merkmal ist in der Population nicht normalverteilt (Test der NV auf Basis der Stichprobendaten)
   
   * Varianzhomogenität nicht gegeben
   
@@ -194,9 +194,9 @@ Bestimmung der Rangplätze:
 
 * Jede Person erhält basierend auf ihrem Messwert einen Rangplatz
 
-  * Person mit der niedrigsten Messwert auf der $AV$ erhält Rangplatz 1
+  * Person mit dem niedrigsten Messwert auf der $AV$ erhält Rangplatz 1
   
-  * Nächste Person erhält am Platz 2
+  * Nächste Person erhält Platz 2
   
   * ...
 
@@ -290,6 +290,8 @@ knitr::kable(d,
                   font_size = 16)
 ```
 ]
+
+***
 
 ```{r echo=F}
 d = data.frame(matrix(nrow = 1, ncol = 18))
@@ -552,7 +554,7 @@ class: top, left
  
 Berechnung der Streuung der Stichprobenkennwerteverteilung:
 
-* Frage: Welche Abreichung des empirischen $U$-Werts von $\mu_U$ ist ausreichend für signifikantes Ergebnis?
+* Frage: Welche Awreichung des empirischen $U$-Werts von $\mu_U$ ist ausreichend für signifikantes Ergebnis?
 
 * Alle denkbaren Werte von $U$ und $U'$ verteilen sich symmetrisch um $\mu_U$
 
@@ -743,13 +745,13 @@ class: top, left
 
 <small>
 
-* Nonparametrisches Pendant für anhängigen t-Test
+* Nonparametrisches Pendant für abhängigen t-Test
 
 * Nutzt ebenfalls Bildung einer Rangreihe
 
 Vorgehen:
 
-1. Bilden der Differenz zwischen Messwertpaaren (wie bei anhängigem t-Test)
+1. Bilden der Differenz zwischen Messwertpaaren (wie bei abhängigem t-Test)
 
 2. Bilden des Betrags jedes Differenzwerts 
 

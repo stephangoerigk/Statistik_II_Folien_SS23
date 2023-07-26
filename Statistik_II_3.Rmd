@@ -990,7 +990,7 @@ class: top, left
 
 Das Verhältnis aufgeklärter zu gesamter Streuung nennt sich Bestimmtheitsmaß $(R^2)$
 
-$$R^2=\frac{\text{erklärte Varianz}}{\text{gesamte Streuung}}=\frac{\sum\limits _{i=1}^{n}(y_i-\bar{y}_i)^2}{\sum\limits _{i=1}^{n}(\hat{y}_i-\bar{y}_i)^2}=(\frac{s_{XY}}{s_X \cdot s_Y})^2$$
+$$R^2=\frac{\text{erklärte Varianz}}{\text{gesamte Streuung}}=\frac{\sum\limits _{i=1}^{n}(\hat{y}_i-\bar{y}_i)^2}{\sum\limits _{i=1}^{n}(y_i-\bar{y}_i)^2}=(\frac{s_{XY}}{s_X \cdot s_Y})^2$$
 <br>
 
 .center[
