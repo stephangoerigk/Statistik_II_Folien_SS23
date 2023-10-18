@@ -15,6 +15,7 @@
     <script src="libs/kePrint/kePrint.js"></script>
     <link href="libs/lightable/lightable.css" rel="stylesheet" />
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
@@ -89,7 +90,9 @@ class: top, left
 
 
 ```r
-t.test(Symptome ~ Gruppe, data = df[df$Gruppe == "Placebo" | df$Gruppe == "Medikament.1",], var.equal = T)
+t.test(Symptome ~ Gruppe, 
+       data = df[df$Gruppe == "Placebo" | df$Gruppe == "Medikament.1",], 
+       var.equal = T)
 ```
 
 ```
@@ -116,7 +119,8 @@ class: top, left
 
 
 ```r
-anova(lm(Symptome ~ Gruppe, data = df[df$Gruppe == "Placebo" | df$Gruppe == "Medikament.1",]))
+anova(lm(Symptome ~ Gruppe, 
+         data = df[df$Gruppe == "Placebo" | df$Gruppe == "Medikament.1",]))
 ```
 
 ```
@@ -214,7 +218,7 @@ class: top, left
 
 * Dies entspricht einem großen Effekt.
 
-**Konventionen:**
+**Cut-offs:**
 
 &lt;table class="table" style="font-size: 18px; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
@@ -276,13 +280,43 @@ class: top, left
 `$$f_s^2=\frac{20.558 \cdot 2}{147}=0.2797$$`
 
 `$$\eta^2=\frac{0.2797}{1+0.2797}=0.2185$$`
+.pull-left[
+
 * Wert fällt im Vergleich zum wahren Effekt auf Populationsebene zu groß aus (Überschätzung)
 
-* Oftmals liefert `\(\omega^2\)` genauere Schätzung (Daten innerhalb der Stichprobe sind überangepasst)
+* `\(\omega^2\)` liefert genauere Schätzung (Daten innerhalb der Stichprobe sind überangepasst)
 
 * Auf der Stichprobenebene klärt der Faktor Gruppe ca. 22% der Varianz der Messwerte auf
 
-* Konventionen für `\(\eta^2\)` entsprechen denen für `\(\Omega^2\)`
+* Cut-offs für `\(\eta^2\)` entsprechen denen für `\(\Omega^2\)`
+]
+
+.pull-right[
+&lt;br&gt;
+**Cut-offs:**
+&lt;table class="table" style="font-size: 18px; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Effektstärke &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Omega-Quadrat &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Kleiner Effekt &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 0.01 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mittlerer Effekt &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 0.06 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Großer Effekt &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 0.14 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
 
 ---
 class: top, left
@@ -541,7 +575,7 @@ class: top, left
 
 #### Post-Hoc-Analysen (1. Wert für `\(\alpha=\)` 0.05, 2. Wert für 0.01)
 
-&lt;table class=" lightable-classic" style='font-size: 8px; font-family: "Arial Narrow", "Source Sans Pro", sans-serif; '&gt;
+&lt;table class=" lightable-classic" style='font-size: 7px; font-family: "Arial Narrow", "Source Sans Pro", sans-serif; '&gt;
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt; df innerhalb &lt;/th&gt;
@@ -1295,15 +1329,18 @@ class: top, left
 
 ##### Normalverteilung
 
+* NV muss in allen Gruppen gegeben sein (hier 3x geprüft)
+
 * Ein signifikanter Shapiro-Wilk Test weist auf Verletzung der NV-Annahme hin
 
-* In unserem Beispiel: `\(p&gt;.05\)`
+* In unserem Beispiel: alle `\(p&gt;.05\)` (Tests nicht signifikant)
 
 `\(\rightarrow\)` NV-Annahme kann als gegeben angesehen werden
 ]
 
 .pull-right[
-&lt;small&gt;
+
+.code80[
 
 ```r
 by(df$Symptome, df$Gruppe, shapiro.test)
@@ -1333,7 +1370,8 @@ by(df$Symptome, df$Gruppe, shapiro.test)
 ## data:  dd[x, ]
 ## W = 0.98928, p-value = 0.9279
 ```
-&lt;/small&gt;
+]
+
 ]
 
 ---

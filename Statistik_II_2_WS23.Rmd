@@ -6,7 +6,7 @@ institute: "RStudio, PBC"
 date: "2016/12/12 (updated: `r Sys.Date()`)"
 output:
   xaringan::moon_reader:
-    css: [xaringan-themer.css, "hygge"]
+    css: [xaringan-themer.css, "hygge", style.css]
     lib_dir: libs
     nature:
       slideNumberFormat: "%current%"
@@ -153,7 +153,9 @@ class: top, left
 ##### Exkurs: Beziehung zwischen F-Wert und t-Wert
 
 ```{r}
-t.test(Symptome ~ Gruppe, data = df[df$Gruppe == "Placebo" | df$Gruppe == "Medikament.1",], var.equal = T)
+t.test(Symptome ~ Gruppe, 
+       data = df[df$Gruppe == "Placebo" | df$Gruppe == "Medikament.1",], 
+       var.equal = T)
 ```
 
 ---
@@ -165,7 +167,8 @@ class: top, left
 ##### Exkurs: Beziehung zwischen F-Wert und t-Wert
 
 ```{r}
-anova(lm(Symptome ~ Gruppe, data = df[df$Gruppe == "Placebo" | df$Gruppe == "Medikament.1",]))
+anova(lm(Symptome ~ Gruppe, 
+         data = df[df$Gruppe == "Placebo" | df$Gruppe == "Medikament.1",]))
 ```
 
 ---
@@ -240,7 +243,7 @@ $$\omega^2=\frac{f^2}{1+f^2}= \frac{0.26}{1+0.26}=0.2063$$
 
 * Dies entspricht einem großen Effekt.
 
-**Konventionen:**
+**Cut-offs:**
 
 ```{r echo=F}
 df <- data.frame(Effektstärke = c("Kleiner Effekt", "Mittlerer Effekt", "Großer Effekt"),
@@ -289,13 +292,30 @@ class: top, left
 $$f_s^2=\frac{20.558 \cdot 2}{147}=0.2797$$
 
 $$\eta^2=\frac{0.2797}{1+0.2797}=0.2185$$
+.pull-left[
+
 * Wert fällt im Vergleich zum wahren Effekt auf Populationsebene zu groß aus (Überschätzung)
 
-* Oftmals liefert $\omega^2$ genauere Schätzung (Daten innerhalb der Stichprobe sind überangepasst)
+* $\omega^2$ liefert genauere Schätzung (Daten innerhalb der Stichprobe sind überangepasst)
 
 * Auf der Stichprobenebene klärt der Faktor Gruppe ca. 22% der Varianz der Messwerte auf
 
-* Konventionen für $\eta^2$ entsprechen denen für $\Omega^2$
+* Cut-offs für $\eta^2$ entsprechen denen für $\Omega^2$
+]
+
+.pull-right[
+<br>
+**Cut-offs:**
+```{r echo=F}
+df <- data.frame(Effektstärke = c("Kleiner Effekt", "Mittlerer Effekt", "Großer Effekt"),
+                 OmegaQuadrat = c("0.01", "0.06", "0.14"))
+
+names(df) = c("Effektstärke", "Omega-Quadrat")
+
+kable(df[,]) %>%
+  kable_styling(font_size = 18)
+```
+]
 
 ---
 class: top, left
@@ -563,7 +583,7 @@ rownames(table_df) = NULL
 # Print the resulting data frame
 table_df %>%
   kbl() %>%
-  kable_classic(full_width = T, position = "left", font_size = 8)
+  kable_classic(full_width = T, position = "left", font_size = 7)
 ```
 
 ---
@@ -742,19 +762,23 @@ class: top, left
 
 ##### Normalverteilung
 
+* NV muss in allen Gruppen gegeben sein (hier 3x geprüft)
+
 * Ein signifikanter Shapiro-Wilk Test weist auf Verletzung der NV-Annahme hin
 
-* In unserem Beispiel: $p>.05$
+* In unserem Beispiel: alle $p>.05$ (Tests nicht signifikant)
 
 $\rightarrow$ NV-Annahme kann als gegeben angesehen werden
 ]
 
 .pull-right[
-<small>
-```{r out.height= '50%'}
+
+.code80[
+```{r out.height= '30%'}
 by(df$Symptome, df$Gruppe, shapiro.test)
 ```
-</small>
+]
+
 ]
 
 ---
