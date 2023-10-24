@@ -6,7 +6,7 @@ institute: "RStudio, PBC"
 date: "2016/12/12 (updated: `r Sys.Date()`)"
 output:
   xaringan::moon_reader:
-    css: [xaringan-themer.css, "hygge"]
+    css: [xaringan-themer.css, "hygge", style.css]
     lib_dir: libs
     nature:
       slideNumberFormat: "%current%"
@@ -1048,11 +1048,13 @@ class: top, left
 
 #### Berechnen der Regression in R
 
+.code80[
 ```{r}
 model = lm(Y ~ X, data = sampledata) # Aufstellen des Modells
 
 summary(model) # Anzeigen des Modelloutputs
 ```
+]
 
 ---
 class: top, left
@@ -1061,12 +1063,13 @@ class: top, left
 #### Berechnen der Regression in R
 
 .pull-left[
-
+.code80[
 ```{r}
 model = lm(Y ~ X, data = sampledata) # Aufstellen des Modells
 
 summary(model) # Anzeigen des Modelloutputs
 ```
+]
 ]
 
 .pull-right[
