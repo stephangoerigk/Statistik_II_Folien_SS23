@@ -862,7 +862,7 @@ class: top, left
 
 #### Beispiel: Faktoren für Erfolg einer Therapie
 
-**2. Multiples Regressionsmodell mit Interaktion (stetig x stetig) :**
+**2. Multiples Regressionsmodell mit Interaktion (diskret x stetig) :**
 
 .pull-left[
 Mögliche Forschungsfragen im Modell:
@@ -898,7 +898,7 @@ class: top, left
 
 #### Beispiel: Faktoren für Erfolg einer Therapie
 
-**2. Multiples Regressionsmodell mit Interaktion (stetig x stetig) :**
+**2. Multiples Regressionsmodell mit Interaktion (diskret x stetig) :**
 
 .pull-left[
 .code60[
@@ -929,7 +929,7 @@ class: top, left
 
 #### Beispiel: Faktoren für Erfolg einer Therapie
 
-**2. Multiples Regressionsmodell mit Interaktion (stetig x stetig) :**
+**2. Multiples Regressionsmodell mit Interaktion (diskret x stetig) :**
 
 .pull-left[
 .code60[
@@ -981,7 +981,7 @@ class: top, left
 .pull-left[
 #### Beispiel: Faktoren für Erfolg einer Therapie
 
-**2. Multiples Regressionsmodell mit Interaktion (stetig x stetig) :**
+**2. Multiples Regressionsmodell mit Interaktion (diskret x stetig) :**
 
 Zentrierung des IQ Prädiktors:
 
@@ -1009,7 +1009,7 @@ class: top, left
 
 #### Beispiel: Faktoren für Erfolg einer Therapie
 
-**2. Multiples Regressionsmodell mit Interaktion (stetig x stetig) :**
+**2. Multiples Regressionsmodell mit Interaktion (diskret x stetig) :**
 
 .pull-left[
 .code60[
@@ -1027,7 +1027,7 @@ Interpretation der Koeffizienten:
 
 * Therapeut:innen mit niedriger Erfahrung (Erfahrung=0) haben bei einem durchschnittlichen IQ (IQ=0) einen geschätzten Therapieerfolg von `r round(as.data.frame(summary(model)$coefficients)[1,1], 2)` Punkten
 
-* Therapeut:innen mit hoher Erfahrung (Erfahrung=1) haben bei einem durchschnittlichen IQ (IQ=0) einen geschätzten Therapieerfolg von `r round(as.data.frame(summary(model)$coefficients)[2,1], 2)` Punkten mehr, als die Referenzgruppe $\rightarrow$ Nun wieder signifikant $(t_{48}=5.99, p<.001)$
+* Therapeut:innen mit hoher Erfahrung (Erfahrung=1) haben bei einem durchschnittlichen IQ (IQ=0) einen geschätzten Therapieerfolg von `r round(as.data.frame(summary(model)$coefficients)[2,1], 2)` Punkten mehr, als die Referenzgruppe $\rightarrow$ Nun wieder signifikant $(t_{48}=8.24, p<.001)$
 
 ]
 
@@ -1039,7 +1039,7 @@ class: top, left
 
 .pull-left[
 
-**2. Multiples Regressionsmodell mit Interaktion (stetig x stetig) :**
+**2. Multiples Regressionsmodell mit Interaktion (diskret x stetig) :**
 
 .code60[
 ```{r}
@@ -1063,6 +1063,71 @@ plot_model(model, type = "pred", terms = c("Erfahrung", "IQ_cent [-15, 0, 15]"))
 ```
 ]
 ]
+
+---
+class: top, left
+### Regressionsmodelle mit Interaktionen
+
+#### Beispiel: Faktoren für Erfolg einer Therapie
+
+**2. Multiples Regressionsmodell mit Interaktion (stetig x stetig) :**
+
+.pull-left[
+Mögliche Forschungsfragen im Modell:
+
+<small>
+
+1. Verändert sich der Therapieerfolg von konfrontativeren Therapeut:innen mit zunehmendem IQ?
+
+$\rightarrow$ Diese  Frage stellt eine sog. Moderationshypothese dar (rechts dargestellt)
+]
+
+.pull-right[
+.center[
+```{r eval = TRUE, echo = F, out.width = "950px"}
+knitr::include_graphics("bilder/Moderation.png")
+```
+]
+
+* AV: Therapieerfolg
+* UV: IQ
+* Moderator: Erfahrung
+
+**Moderation:** *Beeinflusst die Intelligenz den Effekt der Konfrontationsfähigkeit auf den Therapieerfolg?* (Beispielserklärung: Intelligentere Therapeut:innen können besser konfrontieren.) 
+]
+
+---
+class: top, left
+### Regressionsmodelle mit Interaktionen
+
+#### Beispiel: Faktoren für Erfolg einer Therapie
+
+**2. Multiples Regressionsmodell mit Interaktion (stetig x stetig) :**
+
+.pull-left[
+.code60[
+```{r}
+df$IQ_cent = round(df$IQ - mean(df$IQ))
+
+model = lm(Therapieerfolg ~ Konfrontativ * IQ, data = df)
+summary(model)
+```
+]
+]
+
+.pull-right[
+Interpretation der Koeffizienten:
+<small>
+* Therapeut:innen mit niedriger Konfrontativität (Konfrontativ=0) haben bei einem IQ von 0 einen geschätzten Therapieerfolg von `r round(as.data.frame(summary(model)$coefficients)[1,1], 2)` Punkten
+
+* Therapeut:innen mit 1 Einheit zusätzlicher Konfrontativität haben  zusätzlichen Therapieerfolg von `r round(as.data.frame(summary(model)$coefficients)[2,1], 2)` Punkten, im Vergleich zur Referenzgruppe
+
+* Therapeut:innen mit 1 Einheit zusätzlichem IQ haben zusätzlichen Therapieerfolg von `r round(as.data.frame(summary(model)$coefficients)[3,1], 2)` Punkten, im Vergleich zur Referenzgruppe
+
+* Therapeut:innen mit 1 Einheit zusätzlichem IQ haben bei Zunahme um 1 Punkt Konfrontativität eine zusätzliche Steigung von `r round(as.data.frame(summary(model)$coefficients)[4,1], 3)` Punkten.
+
+]
+
 
 ---
 class: top, left
@@ -1137,8 +1202,8 @@ Modell mit Dummy-Kodierung:
 
 <small>
 
-$$Erfolg = \beta_1 \cdot Erfahrung_{(mittel)} + \beta_2 \cdot Erfahrung_{(hoch)} + \beta_3 \cdot Konfrontationsbereitschaft ...$$
-$$...+  \beta_4 \cdot (Erfahrung_{(mittel)} \cdot Konfrontationsbereitschaft) +  \beta_5 \cdot (Erfahrung_{(hoch)} \cdot Konfrontationsbereitschaft) + \epsilon_i$$
+$$Erfolg = \beta_1 \cdot Erfahrung_{(mittel)} + \beta_2 \cdot Erfahrung_{(hoch)} + \beta_3 \cdot Konfrontationsb. ...$$
+$$...+  \beta_4 \cdot (Erfahrung_{(mittel)} \cdot Konfrontationsb.) +  \beta_5 \cdot (Erfahrung_{(hoch)} \cdot Konfrontationsb.) + \epsilon_i$$
 ---
 class: top, left
 ### Regressionsmodelle mit Interaktionen
