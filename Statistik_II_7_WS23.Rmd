@@ -251,14 +251,14 @@ Modell mit 2 Prädiktoren: Erfahrung und Konfrontationsbereitschaft:
 
 $$Y_i=a + \beta_1 \cdot X_{i1} + \beta_2 \cdot X_{i2} + \epsilon_i$$
 
-$$Erfolg = \beta_1 \cdot Erfahrung_{(hoch)} + \beta_2 \cdot Konfrontationsbereitschaft + \epsilon_i$$
+$$Erfolg = \beta_1 \cdot Erfahrung_{(hoch)} + \beta_2 \cdot Konfrontationsb. + \epsilon_i$$
 
 
 **2. Multiples Regressionsmodell mit Interaktion (diskret x stetig) :**
 
 $$Y_i=a + \beta_1 \cdot X_{i1} + \beta_2 \cdot X_{i2} +  \beta_3 \cdot (X_{i1} \cdot X_{i2}) + \epsilon_i$$
 
-$$Erfolg = \beta_1 \cdot Erfahrung_{(hoch)} + \beta_2 \cdot Konfrontationsbereitschaft +  \beta_3 \cdot (Erfahrung_{(hoch)} \cdot Konfrontationsbereitschaft)+ \epsilon_i$$
+$$Erfolg = \beta_1 \cdot Erfahrung_{(hoch)} + \beta_2 \cdot Konfrontationsb. +  \beta_3 \cdot (Erfahrung_{(hoch)} \cdot Konfrontationsb.)+ \epsilon_i$$
 ---
 class: top, left
 ### Regressionsmodelle mit Interaktionen
