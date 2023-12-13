@@ -67,7 +67,7 @@ class: middle, left
 # Statistik II
 
 ### Einheit 8: ANOVA mit Messwiederholung
-##### 14.06.2023 | Prof. Dr. phil. Stephan Goerigk
+##### 13.12.2023 | Prof. Dr. phil. Stephan Goerigk
 
 ---
 class: top, left
