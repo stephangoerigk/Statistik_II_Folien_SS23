@@ -577,7 +577,7 @@ Berechnung:
 
 $$\hat{\sigma}^2_{Gruppe}= \frac{QS_{Gruppe}}{df_{Gruppe}}$$
 
-Die Quadratsumme $(QS)$ entspricht der quadrierten Abweichung der Mittelwerte $(\bar{Gruppe_{i}})$ vom Gesamtmittelwert $(\bar{G})$ multipliziert mit der Zellgröße $n$ und der Anzahl der Stufen der Gruppenvariable:
+Die Quadratsumme $(QS)$ entspricht der quadrierten Abweichung der Mittelwerte $(\bar{Gruppe_{i}})$ vom Gesamtmittelwert $(\bar{G})$ multipliziert mit der Zellgröße $n$ und der Anzahl der Stufen der Zeitvariable (Anzahl der Messwiederholungen):
 
 $$\hat{\sigma}^2_{Gruppe}= \frac{\sum\limits _{i=1}^{p}n \cdot q \cdot (\bar{Gruppe_{i}} - \bar{G})^2}{p-1}$$
 
@@ -593,7 +593,7 @@ Berechnung:
 
 $$\hat{\sigma}^2_{Zeit}= \frac{QS_{Zeit}}{df_{Zeit}}$$
 
-Die Quadratsumme $(QS)$ entspricht der quadrierten Abweichung der Mittelwerte $(\bar{Zeit_{j}})$ vom Gesamtmittelwert $(\bar{G})$ multipliziert mit der Zellgröße $n$ und der Anzahl der Messwiederholungen:
+Die Quadratsumme $(QS)$ entspricht der quadrierten Abweichung der Mittelwerte $(\bar{Zeit_{j}})$ vom Gesamtmittelwert $(\bar{G})$ multipliziert mit der Zellgröße $n$ und der Anzahl der Stufen der Gruppennvariable:
 
 $$\hat{\sigma}^2_{Zeit}= \frac{\sum\limits _{j=1}^{q}n \cdot p \cdot (\bar{Zeit_{j}} - \bar{G})^2}{q-1}$$
 
@@ -649,7 +649,7 @@ class: top, left
 
 * Prüfvarianz für $(Zeit)$ spielt hier keine Rolle
 
-* Ziel: Abbilden der Variabilität in der Veränderung der Personen (Variabilität innerhalb der Vpn)
+* Ziel: Abbilden der Variabilität der Personen in der Stichprobe (zwischen Personen)
 
 Vorgehen:
 
@@ -667,7 +667,7 @@ class: top, left
 
 * Messwiederholung Zeit und Zeit x Gruppe Interaktion identisch
 
-* Ziel: Abbilden der Variabilität der Personen in der Stichprobe
+* Ziel: Abbilden der Variabilität in der Veränderung der Personen (Variabilität innerhalb der Vpn)
 
 * Unterschiede zwischen Vpn müssen auch mitberücksichtigt werden $\rightarrow$ auch $\bar{GruppeVpn}_{im}$ und $(\bar{Gruppe}_{i})$ gehen mit ein
 
