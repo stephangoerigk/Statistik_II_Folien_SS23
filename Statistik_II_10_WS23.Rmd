@@ -593,9 +593,9 @@ d = data.frame(
   Notation = c(
     "$f_{bi}$",
    "$f_{ei}$",
-   "$f_{ei} - f_{ei}$",
-   "$(f_{ei} - f_{ei})^2$",
-   "$\\frac{(f_{ei} - f_{ei})^2}{f_{ei}}$"
+   "$f_{bi} - f_{ei}$",
+   "$(f_{bi} - f_{ei})^2$",
+   "$\\frac{(f_{bi} - f_{ei})^2}{f_{ei}}$"
   ),
   Frauen = c(
     "$101$",
